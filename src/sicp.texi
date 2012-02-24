@@ -1,5 +1,5 @@
 \input texinfo
-@input utopia
+@input charter
 @kindle
 @comment
 @comment             **********************************************************
@@ -7,8 +7,8 @@
 @settitle            Structure and Interpretation of Computer Programs, 2e
 @comment             Unofficial Texinfo Format
 @comment
-@set utfversion      2.gavrie1 
-@set utfversiondate  November 21, 2011
+@set utfversion      2.araba1p-a1 
+@set utfversiondate  February 20, 2012
 @comment
 @comment             This file is licensed under a Creative Commons 
 @comment             Attribution-ShareAlike 3.0 Unported License 
@@ -76,23 +76,26 @@
 @setshortcontentsaftertitlepage
 
 @titlepage
-@titlefont{Structure and Interpretation}
+@titlefont{Structure and}
 @sp 0.5
-@title  of Computer Programs
+@titlefont{Interpretation of}
+@sp 0.3
+@title Computer Programs
 @sp 0.2
 @subtitle Second Edition
 @subtitle Unofficial Texinfo Format @value{utfversion}
 @author Harold Abelson and Gerald Jay Sussman
 @sp 0.2
 @author with Julie Sussman
-@sp 0.4
+@sp 0.5
 @author foreword by Alan J. Perlis
 @sp 0.4
 
 @page
 @vskip 0pt plus 1filll
 @noindent
-Copyright @copyright{} 1996 by The Massachusetts Institute of Technology
+Copyright @copyright{} 1996 @*
+by The Massachusetts Institute of Technology
 
 @sp 0.5
 @noindent
@@ -112,8 +115,8 @@ with Julie Sussman, foreword by Alan J. Perlis
 
 @noindent
 This work is licensed under a Creative Commons@* 
-Attribution-ShareAlike 3.0 Unported License 
-(@url{http://creativecommons.org/licenses/by-sa/3.0/, CC BY-SA 3.0}).@*
+Attribution-ShareAlike 3.0 Unported License@*
+(@url{http://creativecommons.org/licenses/by-sa/3.0/, CC BY-SA 3.0}).
 Based on a work at @url{http://mitpress.mit.edu/sicp/, mitpress.mit.edu}.
 
 @sp 0.5
@@ -125,23 +128,23 @@ London, England
 @sp 0.5
 @noindent
 McGraw-Hill Book Company@*
-New York, St. Louis, San Francisco,@* 
-Montreal, Toronto
+New York, St. Louis, San Francisco, Montreal, Toronto
+
+@c @sp 0.5
+@c @noindent
+@c This book is one of a series of texts written by faculty of the Electrical
+@c Engineering and Computer Science Department at the Massachusetts Institute of
+@c Technology.  It was edited and produced by The @acronym{MIT} Press under a
+@c joint production-distribution arrangement with the McGraw-Hill Book Company.
 
 @sp 0.5
 @noindent
-This book is one of a series of texts written by faculty of the Electrical
-Engineering and Computer Science Department at the Massachusetts Institute of
-Technology.  It was edited and produced by The @acronym{MIT} Press under a
-joint production-distribution arrangement with the McGraw-Hill Book Company.
-
-@sp 0.5
-@noindent
-Unofficial Texinfo Format @url{http://sicpebook.wordpress.com, @value{utfversion}} (@value{utfversiondate}),@*
-based on @url{http://www.neilvandyke.org/sicp-texi/, 2.neilvandyke4} (January 10, 2007).
+Unofficial Texinfo Format @value{utfversion} (@value{utfversiondate}),
+based on 2.gavrie1 (November 21, 2011) and 
+@url{http://www.neilvandyke.org/sicp-texi/, 2.neilvandyke4} (January 10, 2007).
 
 @end titlepage
-@everyheading @| @| @thispage
+@everyheading @| @| 
 
 @headingsoff
 
@@ -445,13 +448,10 @@ you use your full name or distribute Info, @acronym{DVI}, PostScript, or
 @acronym{PDF} formats that might embed your account or machine name.}
 
 @noindent
-@i{Peath,}
-
-@noindent
-@i{Lytha Ayth}
+@i{Peath, Lytha Ayth}
 
 @sp 0.5
-@b{Addendum:} See also the @acronym{SICP} video lectures by Abelson and Sussman:@*
+@b{Addendum:} See also the @acronym{SICP} video lectures by Abelson and Sussman:
 at @url{http://groups.csail.mit.edu/mac/classes/6.001/abelson-sussman-lectures/, @acronym{MIT CSAIL}} or 
 at @url{http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/video-lectures/, @acronym{MIT OCW}}.
 
@@ -461,9 +461,13 @@ from 2001. Ten years later, @acronym{UTF} has been transformed: mathematical
 symbols and formulas are properly typeset, and figures drawn in 
 vector graphics. The original text formulas and @acronym{ASCII} art figures 
 are still there in the Texinfo source, but will display only when compiled 
-to Info output. In the dawn of e-book readers and tablets, reading a 
-@acronym{PDF} on screen is officially not silly anymore. Enjoy!
+to Info output. At the dawn of e-book readers and tablets, reading a 
+@acronym{PDF} on screen is officially not silly anymore. 
 
+@noindent
+Enjoy!
+
+@sp 0.5
 @noindent
 @i{A.R, May, 2011}
 
@@ -651,6 +655,7 @@ without being saturated with discretionary functions.  Invent and fit; have
 fits and reinvent!  We toast the Lisp programmer who pens his thoughts within
 nests of parentheses.
 
+@sp 0.5
 @noindent
 Alan J. Perlis@*
 New Haven, Connecticut
@@ -703,9 +708,9 @@ Even so, this is still an intense course.  Some instructors may
 wish to cover only the first three or four chapters, leaving the other material
 for subsequent courses.
 
-The World-Wide-Web site @url{http://mitpress.mit.edu/sicp} provides
+The World-Wide-Web site @url{http://mitpress.mit.edu@//sicp} provides
 support for users of this book.  This includes programs from the book, sample
-programming assignments, supplementary materials and down- loadable
+programming assignments, supplementary materials and downloadable
 implementations of the Scheme dialect of Lisp.
 
 @node    Preface 1e, Acknowledgements, Preface, Top
@@ -859,7 +864,7 @@ undergraduate instruction set a standard that we can all aspire to.  We are
 grateful to Jerry Saltzer and Jim Miller for helping us grapple with the
 mysteries of concurrency, and to Peter Szolovits and David McAllester for their
 contributions to the exposition of nondeterministic evaluation in @ref{Chapter
-4,,Chap. 4}.
+4,,Chapter 4}.
 
 Many people have put in significant effort presenting this material at other
 universities.  Some of the people we have worked closely with are Jacob
@@ -1168,24 +1173,16 @@ numbers.  For example:
 @lisp
 (+ 137 349)
 @i{486}
-@end lisp
 
-@lisp
 (- 1000 334)
 @i{666}
-@end lisp
 
-@lisp
 (* 5 99)
 @i{495}
-@end lisp
 
-@lisp
 (/ 10 5)
 @i{2}
-@end lisp
 
-@lisp
 (+ 2.7 10)
 @i{12.7}
 @end lisp
@@ -1207,9 +1204,7 @@ the following examples:
 @lisp
 (+ 21 35 12 7)
 @i{75}
-@end lisp
 
-@lisp
 (* 25 4 12)
 @i{1200}
 @end lisp
@@ -1290,9 +1285,7 @@ value 2 by name:
 @lisp
 size
 @i{2}
-@end lisp
 
-@lisp
 (* 5 size)
 @i{10}
 @end lisp
@@ -1301,10 +1294,14 @@ Here are further examples of the use of @t{define}:
 
 @lisp
 (define pi 3.14159)
+
 (define radius 10)
+
 (* pi (* radius radius))
 @i{314.159}
+
 (define circumference (* 2 pi radius))
+
 circumference
 @i{62.8318}
 @end lisp
@@ -1513,9 +1510,9 @@ language as
 We can understand this in the following way:
 
 @example
-(define (square    x)         (*      x         x))
-  |        |       |           |      |         |
- To     square  something,  multiply  it  by  itself.
+(define (square x)    (*       x       x))
+  |      |      |      |       |       |
+ To square something, multiply it by itself.
 @end example
 
 We have here a @newterm{compound procedure}, which has been given the name
@@ -1576,7 +1573,9 @@ numbers as arguments, produces the sum of their squares:
 
 @lisp
 (define (sum-of-squares x y)
-  (+ (square x) (square y)))
+  (+ (square x) 
+     (square y)))
+
 (sum-of-squares 3 4)
 @i{25}
 @end lisp
@@ -1722,17 +1721,21 @@ sequence of expansions
 
 @lisp
 (sum-of-squares (+ 5 1) (* 5 2))
-(+    (square (+ 5 1))      (square (* 5 2))  )
-(+    (* (+ 5 1) (+ 5 1))   (* (* 5 2) (* 5 2)))
+
+(+ (square (+ 5 1)) (square (* 5 2)))
+
+(+ (* (+ 5 1) (+ 5 1)) (* (* 5 2) (* 5 2)))
 @end lisp
 
 @noindent
 followed by the reductions
 
 @lisp
-(+         (* 6 6)             (* 10 10))
-(+           36                   100)
-                    136
+(+ (* 6 6) (* 10 10))
+
+(+ 36 100)
+
+136
 @end lisp
 
 This gives the same answer as our previous evaluation model, but the process is
@@ -1959,30 +1962,33 @@ presented.
 
 @lisp
 10
+
 (+ 5 3 4)
+
 (- 9 1)
+
 (/ 6 2)
+
 (+ (* 2 4) (- 4 6))
+
 (define a 3)
+
 (define b (+ a 1))
+
 (+ a b (* a b))
+
 (= a b)
+
 (if (and (> b a) (< b (* a b)))
     b
     a)
-@end lisp
 
-@lisp
 (cond ((= a 4) 6)
       ((= b 4) (+ 6 7 a))
       (else 25))
-@end lisp
 
-@lisp
 (+ 2 (if (> b a) b a))
-@end lisp
 
-@lisp
 (* (cond ((> a b) a)
          ((< a b) b)
          (else -1))
@@ -2121,13 +2127,16 @@ express the general Newton's method as a Lisp procedure in @ref{1.3.4}.}
 For example, we can compute the square root of 2 as follows.
 Suppose our initial guess is 1:
 
-@smallexample
-Guess     Quotient               Average
-1         (2/1) = 2              ((2 + 1)/2) = 1.5
-1.5       (2/1.5) = 1.3333       ((1.3333 + 1.5)/2) = 1.4167
-1.4167    (2/1.4167) = 1.4118    ((1.4167 + 1.4118)/2) = 1.4142
-1.4142    ...                    ...
-@end smallexample
+@example
+Guess    Quotient     Average
+1        (2/1)        ((2 + 1)/2)
+           = 2          = 1.5
+1.5      (2/1.5)      ((1.3333 + 1.5)/2)
+           = 1.3333     = 1.4167
+1.4167   (2/1.4167)   ((1.4167 + 1.4118)/2) 
+           = 1.4118     = 1.4142  
+1.4142   ...          ...
+@end example
 
 @noindent
 Continuing this process, we obtain better and better approximations to the
@@ -2232,7 +2241,9 @@ Eva Lu Ator claims this can indeed be done, and she defines a new version of
 @t{if}:
 
 @lisp
-(define (new-if predicate then-clause else-clause)
+(define (new-if predicate 
+                then-clause 
+                else-clause)
   (cond (predicate then-clause)
         (else else-clause)))
 @end lisp
@@ -2288,7 +2299,7 @@ x/y^2 + 2y
 
 @end ifinfo
 @tex
-$${x \big/\! y^2} + 2\!y\over 3$$
+$${x\!\big/\! y^2} + 2\!y\over 3$$
 @end tex
 @noindent
 Use this formula to implement a cube-root procedure analogous to the
@@ -2309,13 +2320,6 @@ much less specify a well-defined process to be carried out by a computer.  This
 will be addressed more carefully in @ref{1.2}.  But first let's
 consider some other important points illustrated by the @t{sqrt} example.
 
-Observe that the problem of computing square roots breaks up naturally into a
-number of subproblems: how to tell whether a guess is good enough, how to
-improve a guess, and so on.  Each of these tasks is accomplished by a separate
-procedure.  The entire @t{sqrt} program can be viewed as a cluster of
-procedures (shown in @ref{Figure 1.2}) that mirrors the decomposition of the
-problem into subproblems.
-
 @float
 @quotation
 @anchor{Figure 1.2}
@@ -2324,21 +2328,29 @@ problem into subproblems.
 @end ifinfo
 
 @example
-                       sqrt
-                        |
-                    sqrt-iter
-                    /       \
-            good-enough    improve
-              /     \          \
-          square    abs      average
+
+                  sqrt
+                   |
+               sqrt-iter
+               /       \
+       good-enough    improve
+         /     \          \
+     square    abs      average
 @end example
 @iftex
-@sp 0.5
-@center @strong{Figure 1.2:} Procedural decomposition of the @t{sqrt} program.
 @sp 0.7
+@strong{Figure 1.2:} Procedural decomposition of the @t{sqrt} program.
+@sp 0.5
 @end iftex
 @end quotation
 @end float
+
+Observe that the problem of computing square roots breaks up naturally into a
+number of subproblems: how to tell whether a guess is good enough, how to
+improve a guess, and so on.  Each of these tasks is accomplished by a separate
+procedure.  The entire @t{sqrt} program can be viewed as a cluster of
+procedures (shown in @ref{Figure 1.2}) that mirrors the decomposition of the
+problem into subproblems.
 
 The importance of this decomposition strategy is not simply that one is
 dividing the program into parts.  After all, we could take any large program
@@ -2629,23 +2641,6 @@ observation translates directly into a procedure:
 We can use the substitution model of @ref{1.1.5} to watch this
 procedure in action computing 6!, as shown in @ref{Figure 1.3}.
 
-Now let's take a different perspective on computing factorials.  We could
-describe a rule for computing @math{n!} by specifying that we first multiply 1 by
-2, then multiply the result by 3, then by 4, and so on until we reach @math{n}.
-More formally, we maintain a running product, together with a counter that
-counts from 1 up to @math{n}.  We can describe the computation by saying that the
-counter and the product simultaneously change from one step to the next
-according to the rule
-
-@example
-product  @math{\gets}  counter  *  product
-counter  @math{\gets}  counter  +  1
-@end example
-
-@noindent
-and stipulating that @math{n!} is the value of the product when the counter
-exceeds @math{n}.
-
 @float
 @quotation
 @anchor{Figure 1.3}
@@ -2668,14 +2663,31 @@ exceeds @math{n}.
 @end example
 @end ifinfo
 @iftex
-@sp 1
-@center @image{fig/chap1/Fig1.3c,,81mm,,.pdf}
+@sp 0.7
+@center @image{fig/chap1/Fig1.3c,,79mm,,.pdf}
 @sp 0.7
 @center @strong{Figure 1.3:} A linear recursive process for computing 6!.
 @sp 1
 @end iftex
 @end quotation
 @end float
+
+Now let's take a different perspective on computing factorials.  We could
+describe a rule for computing @math{n!} by specifying that we first multiply 1 by
+2, then multiply the result by 3, then by 4, and so on until we reach @math{n}.
+More formally, we maintain a running product, together with a counter that
+counts from 1 up to @math{n}.  We can describe the computation by saying that the
+counter and the product simultaneously change from one step to the next
+according to the rule
+
+@example
+product  @math{\gets}  counter  *  product
+counter  @math{\gets}  counter  +  1
+@end example
+
+@noindent
+and stipulating that @math{n!} is the value of the product when the counter
+exceeds @math{n}.
 
 Once again, we can recast our description as a procedure for computing
 factorials:@footnote{In a real program we would probably use the block
@@ -2698,10 +2710,10 @@ about at once.}
 @lisp
 (define (factorial n)
   (fact-iter 1 1 n))
-@end lisp
 
-@lisp
-(define (fact-iter product counter max-count)
+(define (fact-iter product 
+                   counter 
+                   max-count)
   (if (> counter max-count)
       product
       (fact-iter (* counter product)
@@ -2731,11 +2743,11 @@ computing 6!, as shown in @ref{Figure 1.4}.
 @end example
 @end ifinfo
 @iftex
-@sp 0.2
-@center @image{fig/chap1/Fig1.4c,,60mm,,.pdf}
 @sp 0.3
+@center @image{fig/chap1/Fig1.4c,,60mm,,.pdf}
+@sp 0.5
 @center @strong{Figure 1.4:} A linear iterative process for computing 6!.
-@sp 0.7
+@sp 0.2
 @end iftex
 @end quotation
 @end float
@@ -2923,6 +2935,44 @@ looks like a tree, as shown in @ref{Figure 1.5}.  Notice that the branches
 split into two at each level (except at the bottom); this reflects the fact
 that the @t{fib} procedure calls itself twice each time it is invoked.
 
+@float
+@quotation
+@anchor{Figure 1.5}
+@ifinfo
+@strong{Figure 1.5:} The tree-recursive process generated in computing @t{(fib 5)}.
+
+@example
+
+                   ..<............ fib5   <.......... 
+                ...     ___________/  \___________   .  
+             ...       /       . .....            \    . 
+           ..       fib4     .        . . . .     fib3  .  
+         ..     ____/. \____  ..             .  __/  \__  .  
+       ..      /  . .  ..   \    .        ..   /  . .   \   . 
+     ..     fib3 .       .  fib2 .        . fib2 .   .  fib1 .
+   ..      / . \  .     .   /  \  .      .  /  \ ...  .  |  .
+ ..       / . . \   .  .   /  . \   .  .   / .  \   .  . 1 .
+.      fib2 . . fib1.  .fib1 .  fib0 . .fib1. . fib0 .  .  .
+.      /  \  . . |  .  . |  .  . |   . . |   . . |   .   .>
+V     /  . \   . 1  .  . 1  .  . 0  .  . 1  .  . 0  ..
+.  fib1 .. fib0..  .   .   .   .   .   V   .   ..  . 
+.   |  .  . |  . .>     .>.     . .    ..>.      .>
+.   1 .   . 0  .      
+ .   .     .  .       
+  .>.       ..        
+
+@end example
+@end ifinfo
+@iftex
+@sp 0.7
+@center @image{fig/chap1/Fig1.5c,128mm,,,.pdf}
+@sp 0.5
+@strong{Figure 1.5:} The tree-recursive process generated in computing @t{(fib 5)}.
+@sp 0.6
+@end iftex
+@end quotation
+@end float
+
 This procedure is instructive as a prototypical tree recursion, but it is a
 terrible way to compute Fibonacci numbers because it does so much redundant
 computation.  Notice in @ref{Figure 1.5} that the entire computation of
@@ -2955,44 +3005,6 @@ is the @newterm{golden ratio}, which satisfies the equation
 @tex
 $$\varphi^2 = \varphi + 1 $$
 @end tex
-
-@float
-@quotation
-@anchor{Figure 1.5}
-@ifinfo
-@strong{Figure 1.5:} The tree-recursive process generated in computing @t{(fib 5)}.
-
-@example
-
-                   ..<............ fib5   <.......... 
-                ...     ___________/  \___________   .  
-             ...       /       . .....            \    . 
-           ..       fib4     .        . . . .     fib3  .  
-         ..     ____/. \____  ..             .  __/  \__  .  
-       ..      /  . .  ..   \    .        ..   /  . .   \   . 
-     ..     fib3 .       .  fib2 .        . fib2 .   .  fib1 .
-   ..      / . \  .     .   /  \  .      .  /  \ ...  .  |  .
- ..       / . . \   .  .   /  . \   .  .   / .  \   .  . 1 .
-.      fib2 . . fib1.  .fib1 .  fib0 . .fib1. . fib0 .  .  .
-.      /  \  . . |  .  . |  .  . |   . . |   . . |   .   .>
-V     /  . \   . 1  .  . 1  .  . 0  .  . 1  .  . 0  ..
-.  fib1 .. fib0..  .   .   .   .   .   V   .   ..  . 
-.   |  .  . |  . .>     .>.     . .    ..>.      .>
-.   1 .   . 0  .      
- .   .     .  .       
-  .>.       ..        
-
-@end example
-@end ifinfo
-@iftex
-@sp 0.2
-@center @image{fig/chap1/Fig1.5c,144mm,,,.pdf}
-@sp 0.4
-@strong{Figure 1.5:} The tree-recursive process generated in computing @t{(fib 5)}.
-@sp 0.7
-@end iftex
-@end quotation
-@end float
 
 Thus, the process uses a number of steps that grows exponentially with the
 input.  On the other hand, the space required grows only linearly with the
@@ -3111,14 +3123,20 @@ We can easily translate this description into a recursive procedure:
 @lisp
 (define (count-change amount)
   (cc amount 5))
+
 (define (cc amount kinds-of-coins)
-  (cond ((= amount 0) 1)
-        ((or (< amount 0) (= kinds-of-coins 0)) 0)
+  (cond ((= amount 0) 
+         1)
+        ((or (< amount 0) 
+             (= kinds-of-coins 0)) 
+         0)
         (else (+ (cc amount
                      (- kinds-of-coins 1))
                  (cc (- amount
-                        (first-denomination kinds-of-coins))
+                        (first-denomination 
+                         kinds-of-coins))
                      kinds-of-coins)))))
+
 (define (first-denomination kinds-of-coins)
   (cond ((= kinds-of-coins 1) 1)
         ((= kinds-of-coins 2) 5)
@@ -3169,12 +3187,14 @@ computes @math{f} by means of an iterative process.
 is called @newterm{Pascal's triangle}.
 
 @example
+
         1
       1   1
     1   2   1
   1   3   3   1
 1   4   6   4   1
 @end example
+@sp 0.3
 
 The numbers at the edge of the triangle are all 1, and each number inside the
 triangle is the sum of the two numbers above it.@footnote{The elements of
@@ -3292,7 +3312,6 @@ procedures:
 
 @lisp
 (define (cube x) (* x x x))
-
 (define (p x) (- (* 3 x) (* 4 (cube x))))
 
 (define (sine angle)
@@ -3355,8 +3374,8 @@ equivalent linear iteration:
   (if (= counter 0)
       product
       (expt-iter b
-                (- counter 1)
-                (* b product))))
+                 (- counter 1)
+                 (* b product))))
 @end lisp
 
 This version requires @math{\Theta(n)} steps and @math{\Theta(1)} space.
@@ -3408,7 +3427,8 @@ We can express this method as a procedure:
 @lisp
 (define (fast-expt b n)
   (cond ((= n 0) 1)
-        ((even? n) (square (fast-expt b (/ n 2))))
+        ((even? n) (square 
+                    (fast-expt b (/ n 2))))
         (else (* b (fast-expt b (- n 1))))))
 @end lisp
 
@@ -3531,8 +3551,11 @@ us by Joe Stoy, based on an example in @ref{Kaldewaij 1990}.}
                    @math{\langle}@var{??}@math{\rangle}      @r{; compute @i{p}'}
                    @math{\langle}@var{??}@math{\rangle}      @r{; compute @i{q}'}
                    (/ count 2)))
-        (else (fib-iter (+ (* b q) (* a q) (* a p))
-                        (+ (* b p) (* a q))
+        (else (fib-iter (+ (* b q) 
+                           (* a q) 
+                           (* a p))
+                        (+ (* b p) 
+                           (* a q))
                         p
                         q
                         (- count 1)))))
@@ -3571,8 +3594,7 @@ example,
 GCD(206,40) = GCD(40,6)
             = GCD(6,4)
             = GCD(4,2)
-            = GCD(2,0)
-            = 2
+            = GCD(2,0) = 2
 @end example
 
 @noindent
@@ -3681,9 +3703,13 @@ starting with 2.
   (find-divisor n 2))
 
 (define (find-divisor n test-divisor)
-  (cond ((> (square test-divisor) n) n)
-        ((divides? test-divisor n) test-divisor)
-        (else (find-divisor n (+ test-divisor 1)))))
+  (cond ((> (square test-divisor) n) 
+         n)
+        ((divides? test-divisor n) 
+         test-divisor)
+        (else (find-divisor 
+               n 
+               (+ test-divisor 1)))))
 
 (define (divides? a b)
   (= (remainder b a) 0))
@@ -3700,7 +3726,7 @@ We can test whether a number is prime as follows: @math{n} is prime if and only 
 The end test for @t{find-divisor} is based on the fact that if @math{n} is not
 prime it must have a divisor less than or equal to
 @math{\sqrt{n}}.@footnote{If @math{d} is a divisor of @math{n}, then so is
-@math{n \big/\! d}.  But @math{d} and @math{n \big/\! d} cannot both be greater than
+@math{n \big/ d}.  But @math{d} and @math{n \big/ d} cannot both be greater than
 @math{\sqrt{n}}.}  This means that the algorithm need only test divisors
 between 1 and @math{\sqrt{n}}.  Consequently, the number of steps required
 to identify @math{n} as prime will have order of growth
@@ -3752,11 +3778,13 @@ of a number modulo another number:
 (define (expmod base exp m)
   (cond ((= exp 0) 1)
         ((even? exp)
-         (remainder (square (expmod base (/ exp 2) m))
-                    m))
+         (remainder 
+          (square (expmod base (/ exp 2) m))
+          m))
         (else
-         (remainder (* base (expmod base (- exp 1) m))
-                    m))))
+         (remainder 
+          (* base (expmod base (- exp 1) m))
+          m))))
 @end lisp
 
 This is very similar to the @t{fast-expt} procedure of @ref{1.2.4}.
@@ -3794,7 +3822,8 @@ otherwise.
 @lisp
 (define (fast-prime? n times)
   (cond ((= times 0) true)
-        ((fermat-test n) (fast-prime? n (- times 1)))
+        ((fermat-test n) 
+         (fast-prime? n (- times 1)))
         (else false)))
 @end lisp
 
@@ -3879,7 +3908,8 @@ time used in performing the test.
 @lisp
 (define (start-prime-test n start-time)
   (if (prime? n)
-      (report-prime (- (runtime) start-time))))
+      (report-prime (- (runtime) 
+                       start-time))))
 @end lisp
 
 @lisp
@@ -3955,14 +3985,15 @@ calling @t{square}:
 (define (expmod base exp m)
   (cond ((= exp 0) 1)
         ((even? exp)
-         (remainder (* (expmod base (/ exp 2) m)
-                       (expmod base (/ exp 2) m))
-                    m))
+         (remainder 
+          (* (expmod base (/ exp 2) m)
+             (expmod base (/ exp 2) m))
+          m))
         (else
-         (remainder (* base (expmod base 
-                                    (- exp 1) 
-                                    m))
-                    m))))
+         (remainder 
+          (* base 
+             (expmod base (- exp 1) m))
+          m))))
 @end lisp
 
 ``I don't see what difference that could make,'' says Louis.  ``I do.''  says
@@ -4063,14 +4094,18 @@ integers from @t{a} through @t{b}:
 
 @lisp
 (define (sum-integers a b)
-  (if (> a b) 0 (+ a (sum-integers (+ a 1) b))))
+  (if (> a b) 
+      0 
+      (+ a (sum-integers (+ a 1) b))))
 @end lisp
 
 The second computes the sum of the cubes of the integers in the given range:
 
 @lisp
 (define (sum-cubes a b)
-  (if (> a b) 0 (+ (cube a) (sum-cubes (+ a 1) b))))
+  (if (> a b) 
+      0 
+      (+ (cube a) (sum-cubes (+ a 1) b))))
 @end lisp
 
 The third computes the sum of a sequence of terms in the series
@@ -4097,7 +4132,8 @@ fancy numerical tricks in @ref{3.5.3}.}
 (define (pi-sum a b)
   (if (> a b)
       0
-      (+ (/ 1.0 (* a (+ a 2))) (pi-sum (+ a 4) b))))
+      (+ (/ 1.0 (* a (+ a 2))) 
+         (pi-sum (+ a 4) b))))
 @end lisp
 
 These three procedures clearly share a common underlying pattern.  They are for
@@ -4110,8 +4146,7 @@ procedures by filling in slots in the same template:
 (define (@math{\langle}@var{name}@math{\rangle} a b)
   (if (> a b)
       0
-      (+ (@math{\langle}@var{term}@math{\rangle} a)
-         (@math{\langle}@var{name}@math{\rangle} (@math{\langle}@var{next}@math{\rangle} a) b))))
+      (+ (@math{\langle}@var{term}@math{\rangle} a) (@math{\langle}@var{name}@math{\rangle} (@math{\langle}@var{next}@math{\rangle} a) b))))
 @end lisp
 
 The presence of such a common pattern is strong evidence that there is a useful
@@ -4225,9 +4260,11 @@ formula
 
 @end ifinfo
 @tex
-$${\int_a^b f} 	= {\left[f\left(a + {d\!x\over 2}\right) 
-		+ f\left(a + d\!x + {d\!x\over 2}\right) 
-		+ f\left(a + 2d\!x + {d\!x\over 2}\right) + \dots \right] d\!x} $$
+$$\eqalign{ 
+  {\int_a^b \!f} &= \left[f\!\left(a + {d\!x\over 2}\right) 
+                  + f\!\left(a + d\!x + {d\!x\over 2}\right) \right. \cr
+                 &+ \left. f\!\left(a + 2d\!x + {d\!x\over 2}\right) 
+                  + \dots \right] d\!x \cr } $$
 @end tex
 @noindent
 for small values of @math{d\!x}.  We can express this directly as a procedure:
@@ -4342,7 +4379,8 @@ cases of a still more general notion called @t{accumulate} that combines a
 collection of terms, using some general accumulation function:
 
 @lisp
-(accumulate combiner null-value term a next b)
+(accumulate 
+ combiner null-value term a next b)
 @end lisp
 
 @t{Accumulate} takes as arguments the same term and range specifications as
@@ -4457,11 +4495,11 @@ is equivalent to
 
 We can read a @t{lambda} expression as follows:
 
-@lisp
+@smalllisp
 (lambda                     (x)     (+   x     4))
     |                        |       |   |     |
 the procedure of an argument x that adds x and 4
-@end lisp
+@end smalllisp
 
 Like any expression that has a procedure as its value, a @t{lambda}
 expression can be used as the operator in a combination such as
@@ -4525,8 +4563,7 @@ auxiliary procedure to bind the local variables:
     (+ (* x (square a))
        (* y b)
        (* a b)))
-  (f-helper (+ 1 (* x y))
-            (- 1 y)))
+  (f-helper (+ 1 (* x y)) (- 1 y)))
 @end lisp
 
 Of course, we could use a @t{lambda} expression to specify an anonymous
@@ -4658,8 +4695,7 @@ definitions of procedures, however.  We will return to this issue in
 @strong{@anchor{Exercise 1.34}Exercise 1.34:} Suppose we define the procedure
 
 @lisp
-(define (f g)
-  (g 2))
+(define (f g) (g 2))
 @end lisp
 
 Then we have
@@ -4709,14 +4745,17 @@ that implements this strategy:
 
 @lisp
 (define (search f neg-point pos-point)
-  (let ((midpoint (average neg-point pos-point)))
+  (let ((midpoint 
+         (average neg-point pos-point)))
     (if (close-enough? neg-point pos-point)
         midpoint
         (let ((test-value (f midpoint)))
           (cond ((positive? test-value)
-                 (search f neg-point midpoint))
+                 (search 
+                  f neg-point midpoint))
                 ((negative? test-value)
-                 (search f midpoint pos-point))
+                 (search 
+                  f midpoint pos-point))
                 (else midpoint))))))
 @end lisp
 
@@ -4741,7 +4780,8 @@ very subtle consideration, requiring help from a numerical analyst or some
 other kind of magician.}
 
 @lisp
-(define (close-enough? x y) (< (abs (- x y)) 0.001))
+(define (close-enough? x y) 
+  (< (abs (- x y)) 0.001))
 @end lisp
 
 @t{Search} is awkward to use directly, because we can accidentally give it
@@ -4758,12 +4798,15 @@ arguments a number of items that are printed as error messages.}
 (define (half-interval-method f a b)
   (let ((a-value (f a))
         (b-value (f b)))
-    (cond ((and (negative? a-value) (positive? b-value))
+    (cond ((and (negative? a-value) 
+                (positive? b-value))
            (search f a b))
-          ((and (negative? b-value) (positive? a-value))
+          ((and (negative? b-value) 
+                (positive? a-value))
            (search f b a))
           (else
-           (error "Values are not of opposite sign" a b)))))
+           (error "Values are not of 
+                   opposite sign" a b)))))
 @end lisp
 
 The following example uses the half-interval method to approximate @math{\pi} as
@@ -4778,9 +4821,10 @@ Here is another example, using the half-interval method to search for a root of
 the equation @math{x^3 - 2x - 3 = 0} between 1 and 2:
 
 @lisp
-(half-interval-method (lambda (x) (- (* x x x) (* 2 x) 3))
-                      1.0
-                      2.0)
+(half-interval-method 
+ (lambda (x) (- (* x x x) (* 2 x) 3))
+ 1.0
+ 2.0)
 @i{1.89306640625}
 @end lisp
 
@@ -4835,7 +4879,8 @@ Similarly, we can find a solution to the equation
 @math{y = \sin y + \cos y}:
 
 @lisp
-(fixed-point (lambda (y) (+ (sin y) (cos y))) 1.0)
+(fixed-point 
+ (lambda (y) (+ (sin y) (cos y))) 1.0)
 @i{1.2587315962971173}
 @end lisp
 
@@ -4873,7 +4918,8 @@ guesses is simply the process of looking for a fixed point of
 
 @lisp
 (define (sqrt x)
-  (fixed-point (lambda (y) (average y (/ x y))) 1.0))
+  (fixed-point 
+   (lambda (y) (average y (/ x y))) 1.0))
 @end lisp
 
 (Note that @math{y = {1\over2}(y + x \big/\! y)} is a simple transformation of the
@@ -5055,8 +5101,9 @@ follows:
 
 @lisp
 (define (sqrt x)
-  (fixed-point (average-damp (lambda (y) (/ x y)))
-               1.0))
+  (fixed-point 
+   (average-damp (lambda (y) (/ x y)))
+   1.0))
 @end lisp
 
 Notice how this formulation makes explicit the three ideas in the method:
@@ -5076,8 +5123,10 @@ square-root procedure to one that extracts cube roots:@footnote{See
 
 @lisp
 (define (cube-root x)
-  (fixed-point (average-damp (lambda (y) (/ x (square y))))
-               1.0))
+  (fixed-point 
+   (average-damp 
+    (lambda (y) (/ x (square y))))
+   1.0))
 @end lisp
 
 @subsubheading Newton's method
@@ -5189,7 +5238,10 @@ This provides yet another form of the square-root procedure:
 
 @lisp
 (define (sqrt x)
-  (newtons-method (lambda (y) (- (square y) x)) 1.0))
+  (newtons-method 
+   (lambda (y) 
+     (- (square y) x)) 
+   1.0))
 @end lisp
 
 @subsubheading Abstractions and first-class procedures
@@ -5202,7 +5254,8 @@ begins with a function and finds a fixed point of some transformation of the
 function.  We can express this general idea itself as a procedure:
 
 @lisp
-(define (fixed-point-of-transform g transform guess)
+(define (fixed-point-of-transform 
+         g transform guess)
   (fixed-point (transform g) guess))
 @end lisp
 
@@ -5216,9 +5269,10 @@ this section (where we look for a fixed point of the average-damped version of
 
 @lisp
 (define (sqrt x)
-  (fixed-point-of-transform (lambda (y) (/ x y))
-                            average-damp
-                            1.0))
+  (fixed-point-of-transform 
+   (lambda (y) (/ x y))
+   average-damp
+   1.0))
 @end lisp
 
 Similarly, we can express the second square-root computation from this section
@@ -5227,9 +5281,10 @@ transform of @math{y \mapsto y^2 - x}) as
 
 @lisp
 (define (sqrt x)
-  (fixed-point-of-transform (lambda (y) (- (square y) x))
-                            newton-transform
-                            1.0))
+  (fixed-point-of-transform 
+   (lambda (y) (- (square y) x))
+   newton-transform
+   1.0))
 @end lisp
 
 We began @ref{1.3} with the observation that compound procedures are a
@@ -6859,7 +6914,7 @@ follows:
 @end lisp
 
 Define the procedures @code{first-denomination},
-@code{except-first-de- nomination} and @code{no-more?} in terms of primitive
+@code{except-first-denomination} and @code{no-more?} in terms of primitive
 operations on list structures.  Does the order of the list @code{coin-values}
 affect the answer produced by @code{cc}?  Why or why not?
 @end quotation
@@ -11240,9 +11295,9 @@ interface.
 @strong{Figure 2.21:} Structure of the generic complex-arithmetic system.
 
 @example
-    +--------------------------------------------------+
-----| add-complex sub-complex mul-complex- div-complex |----
-    +--------------------------------------------------+
+    +-------------------------------------------------+
+----| add-complex sub-complex mul-complex div-complex |----
+    +-------------------------------------------------+
                 Complex arithmetic package
                  +-----------------------+
                  | real-part   imag-part |
@@ -13318,7 +13373,7 @@ compute polynomial @acronym{GCD}s.}
 @end ifinfo
 @tex
 $ {M\!\epsilon\!\tau\!\alpha\!\beta\!\acute{\alpha}\!\lambda\!\lambda\! o\!\nu\ 
-\grave{\alpha}\!\nu\!\alpha\!\pi\!\alpha\!\acute{\upsilon}\epsilon\!\tau\!\alpha\iota} $
+\grave{\alpha}\!\nu\!\alpha\!\pi\!\alpha\!\acute{\upsilon}\!\epsilon\!\tau\!\alpha\iota} $
 @end tex
 
 (Even while it changes, it stands still.)
@@ -18501,7 +18556,7 @@ depending on the interleaving of the events of @math{P_1} and @math{P_2}:
 110: @math{P_2} changes @t{x} from 10 to 11 between the two
      times that @math{P_1} accesses the value of @t{x} during
      the evaluation of @t{(* x x)}.
-11:  @math{P_2} accesses @t{x}, then @math{P_1} sets @t{x} to
+ 11: @math{P_2} accesses @t{x}, then @math{P_1} sets @t{x} to
      100, then @math{P_2} sets @t{x}.
 100: @math{P_1} accesses @t{x} (twice), then @math{P_2} sets
      @t{x} to 11, then @math{P_1} sets @t{x}.
@@ -30532,7 +30587,7 @@ instruction sequence).
 
 @quotation
 @strong{@anchor{Figure 5.13}Figure 5.13:} @math{\downarrow} The @t{make-new-machine}
-procedure, which imple- ments the basic machine model.
+procedure, which implements the basic machine model.
 
 @smalllisp
 (define (make-new-machine)
@@ -31796,14 +31851,14 @@ Any memory cell that is not so accessible may be recycled.
 There are many ways to perform garbage collection.  The method we shall examine
 here is called @newterm{stop-and-copy}.  The basic idea is to divide memory
 into two halves: ``working memory'' and ``free memory.''  When @t{cons}
-constructs pairs, it allocates these in working memory.  When work- ing memory is
-full, we perform garbage collection by locating all the use- ful pairs in working
+constructs pairs, it allocates these in working memory.  When working memory is
+full, we perform garbage collection by locating all the useful pairs in working
 memory and copying these into consecutive locations in free memory.  (The
 useful pairs are located by tracing all the @t{car} and @t{cdr} pointers,
 starting with the machine registers.)  Since we do not copy the garbage, there
 will presumably be additional free memory that we can use to allocate new
 pairs.  In addition, nothing in the working memory is needed, since all the
-useful pairs in it have been copied.  Thus, if we inter- change the roles of
+useful pairs in it have been copied.  Thus, if we interchange the roles of
 working memory and free memory, we can continue processing; new pairs will be
 allocated in the new working memory (which was the old free memory).  When this
 is full, we can copy the useful pairs into the new free memory (which was the
@@ -35553,7 +35608,7 @@ into sequences of C instructions.  Compile the metacircular evaluator of
 
 @anchor{Abelson et al. 1992}
 Abelson, Harold, Andrew Berlin, Jacob Katzenelson, William McAllister,
-Guillermo Rozas, Gerald Jay Sussman, and Jack Wisdom. 1992.  The Super- com@-pu@-ter
+Guillermo Rozas, Gerald Jay Sussman, and Jack Wisdom. 1992.  The Super@-com@-pu@-ter
 Tool@-kit: A general framework for special-purpose com@-pu@-ting.
 @cite{In@-ter@-na@-tio@-nal Journal of High-Speed Electronics} 3(3): 337-361.
 @url{http://www.hpl.hp.com/techreports/94/HPL-94-30.html, @t{(Online)}}
@@ -36047,7 +36102,7 @@ reference manual.  Memo 203A, @acronym{MIT} Artificial Intelligence Laboratory.
 @anchor{Sutherland (1963)}
 Sutherland, Ivan E.  1963.  @acronym{SKETCHPAD}: A man-machine graphical
 com@-mu@-ni@-cation system.  Technical report 296, @acronym{MIT} Lincoln Laboratory.
-@url{http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.10.4290, @t{(Onl.)}}
+@url{http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.10.4290, @t{(Online)}}
 
 @anchor{Teitelman 1974}
 Teitelman, Warren.  1974.  Interlisp reference manual.  Technical report, Xerox
@@ -36106,7 +36161,7 @@ Kluwer Academic Publishers.
 @unnumbered Index
 
 @quotation
-Any inaccuracies in this index may be explained by the fact@* 
+Any inaccuracies in this index may be explained by the fact 
 that it has been prepared with the help of a computer. 
 
 ---Donald E. Knuth, @cite{Fundamental Algorithms}@* 

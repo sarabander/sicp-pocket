@@ -9,7 +9,7 @@
 
 use Math::BigFloat;
 
-$columns = 12;		# no. of columns in the table
+$columns = 10;		# no. of columns in the table
 $squeeze = 0.70;	# decrease first column width 
 $reftype = "Exercise";
 
