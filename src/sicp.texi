@@ -7,8 +7,8 @@
 @settitle            Structure and Interpretation of Computer Programs, 2e
 @comment             Unofficial Texinfo Format
 @comment
-@set utfversion      2.araba1p-a1 
-@set utfversiondate  February 20, 2012
+@set utfversion      2.araba1p-a2 
+@set utfversiondate  March 17, 2012
 @comment
 @comment             This file is licensed under a Creative Commons 
 @comment             Attribution-ShareAlike 3.0 Unported License 
@@ -94,8 +94,7 @@
 @page
 @vskip 0pt plus 1filll
 @noindent
-Copyright @copyright{} 1996 @*
-by The Massachusetts Institute of Technology
+@copyright{} 1996 by The Massachusetts Institute of Technology
 
 @sp 0.5
 @noindent
@@ -670,6 +669,8 @@ discarded: that the whole point is to always see it as a soap bubble?
 ---Alan J. Perlis
 @end quotation
 
+@sp 0.8
+
 @noindent
 The material in this book has been the basis of @acronym{MIT}'s entry-level
 computer science subject since 1980.  We had been teaching this material for
@@ -724,9 +725,11 @@ scientists.  Computer programs are good, they say, for particular purposes, but
 they aren't flexible.  Neither is a violin, or a typewriter, until you learn
 how to use it.
 
----Marvin Minsky, ``Why Programming Is a Good Medium for Expressing
-Poorly-Understood and Sloppily-Formulated Ideas''
+---Marvin Minsky, @cite{Why Programming Is a Good Medium for Expressing
+Poorly-Understood and Sloppily-Formulated Ideas}
 @end quotation
+
+@sp 0.8
 
 @noindent
 ``The Structure and Interpretation of Computer Programs'' is the entry-level
@@ -937,8 +940,10 @@ all its ideas of relations.  3.  The third is separating them from all other
 ideas that accompany them in their real existence: this is called abstraction,
 and thus all its general ideas are made.
 
----John Locke, @emph{An Essay Concerning Human Understanding} (1690)
+---John Locke, @cite{An Essay Concerning @* Human Understanding} (1690)
 @end quotation
+
+@sp 0.8
 
 @noindent
 We are about to study the idea of a @newterm{computational process}.
@@ -4318,6 +4323,7 @@ is performed iteratively.  Show how to do this by filling in the missing
 expressions in the following definition:
 
 @lisp
+
 (define (sum term a next b)
   (define (iter a result)
     (if @math{\langle}@var{??}@math{\rangle}
@@ -5453,8 +5459,10 @@ what the symbols stand for. @dots{}[The mathematician] need not be idle; there
 are many operations which he may carry out with these symbols, without ever
 having to look at the things they stand for.
 
----Hermann Weyl, @cite{The Mathematical Way of Thinking}
+---Hermann Weyl, @* @cite{The Mathematical Way of Thinking}
 @end quotation
+
+@sp 0.8
 
 @noindent
 We concentrated in @ref{Chapter 1} on computational processes and on the role
@@ -5969,7 +5977,7 @@ barriers and connect the different levels.
 @end ifinfo
 @iftex
 @sp 0.6
-@center @image{fig/chap2/Fig2.1c,155mm,,,.pdf}
+@center @image{fig/chap2/Fig2.1c,125mm,,,.pdf}
 @sp 0.5
 @strong{Fig 2.1:} Data-abstraction barriers in the rational-number package.
 @sp 0.5
@@ -6136,7 +6144,8 @@ definitions:
   (define (dispatch m)
     (cond ((= m 0) x)
           ((= m 1) y)
-          (else (error "Argument not 0 or 1 -- CONS" m))))
+          (else (error "Argument not 0 or 1 
+                        -- CONS" m))))
   dispatch)
 
 (define (car z) (z 0))
@@ -6273,8 +6282,10 @@ the two upper bounds:
 
 @lisp
 (define (add-interval x y)
-  (make-interval (+ (lower-bound x) (lower-bound y))
-                 (+ (upper-bound x) (upper-bound y))))
+  (make-interval (+ (lower-bound x) 
+                    (lower-bound y))
+                 (+ (upper-bound x) 
+                    (upper-bound y))))
 @end lisp
 
 Alyssa also works out the product of two intervals by finding the minimum and
@@ -6284,10 +6295,14 @@ minimum or maximum of any number of arguments.)
 
 @lisp
 (define (mul-interval x y)
-  (let ((p1 (* (lower-bound x) (lower-bound y)))
-        (p2 (* (lower-bound x) (upper-bound y)))
-        (p3 (* (upper-bound x) (lower-bound y)))
-        (p4 (* (upper-bound x) (upper-bound y))))
+  (let ((p1 (* (lower-bound x) 
+               (lower-bound y)))
+        (p2 (* (lower-bound x) 
+               (upper-bound y)))
+        (p3 (* (upper-bound x) 
+               (lower-bound y)))
+        (p4 (* (upper-bound x) 
+               (upper-bound y))))
     (make-interval (min p1 p2 p3 p4)
                    (max p1 p2 p3 p4))))
 @end lisp
@@ -6298,9 +6313,10 @@ the upper bound and the reciprocal of the lower bound, in that order.
 
 @lisp
 (define (div-interval x y)
-  (mul-interval x
-                (make-interval (/ 1.0 (upper-bound y))
-                               (/ 1.0 (lower-bound y)))))
+  (mul-interval x 
+                (make-interval 
+                 (/ 1.0 (upper-bound y)) 
+                 (/ 1.0 (lower-bound y)))))
 @end lisp
 
 @quotation
@@ -6356,14 +6372,19 @@ example, he wants to work with intervals such as @math{3.5 \pm 0.15} rather than
 an alternate constructor and alternate selectors:
 
 @lisp
+
 (define (make-center-width c w)
   (make-interval (- c w) (+ c w)))
 
 (define (center i)
-  (/ (+ (lower-bound i) (upper-bound i)) 2))
+  (/ (+ (lower-bound i) 
+        (upper-bound i)) 
+     2))
 
 (define (width i)
-  (/ (- (upper-bound i) (lower-bound i)) 2))
+  (/ (- (upper-bound i) 
+        (lower-bound i)) 
+     2))
 @end lisp
 
 Unfortunately, most of Alyssa's users are engineers.  Real engineering
@@ -6375,7 +6396,7 @@ as in the resistor specifications given earlier.
 
 @quotation
 @strong{@anchor{Exercise 2.12}Exercise 2.12:} Define a constructor
-@t{make-center-percent} that takes a center and a percentage tolerance and
+@t{make-@/center-@/percent} that takes a center and a percentage tolerance and
 produces the desired interval.  You must also define a selector @t{percent}
 that produces the percentage tolerance for a given interval.  The @t{center}
 selector is the same as the one shown above.
@@ -6422,17 +6443,21 @@ $$ 1 \over 1 \big/ R_1 + 1 \big/ R_2 $$
 He has written the following two programs, each of which computes the
 parallel-resistors formula differently:
 
-@smalllisp
+@lisp
 (define (par1 r1 r2)
-  (div-interval (mul-interval r1 r2)
-                (add-interval r1 r2)))
+  (div-interval 
+   (mul-interval r1 r2)
+   (add-interval r1 r2)))
+
 
 (define (par2 r1 r2)
   (let ((one (make-interval 1 1)))
-    (div-interval one
-                  (add-interval (div-interval one r1)
-                                (div-interval one r2)))))
-@end smalllisp
+    (div-interval 
+     one
+     (add-interval 
+      (div-interval one r1) 
+      (div-interval one r2)))))
+@end lisp
 
 Lem complains that Alyssa's program gives different answers for the two ways of
 computing. This is a serious complaint.
@@ -6504,9 +6529,9 @@ numbers 1, 2, 3, and 4.
 @end ifinfo
 @iftex
 @sp 0.3
-@center @image{fig/chap2/Fig2.2c,57mm,,,.pdf}
+@center @image{fig/chap2/Fig2.2c,35mm,,,.pdf}
 @sp 0.3
-@center @strong{Figure 2.2:} Box-and-pointer representation of @t{(cons 1 2)}.
+@strong{Figure 2.2:} Box-and-pointer representation of @t{(cons 1 2)}.
 @sp 1
 @end iftex
 @end quotation
@@ -6540,9 +6565,9 @@ numbers 1, 2, 3, and 4.
 @end ifinfo
 @iftex
 @sp 0.3
-@center @image{fig/chap2/Fig2.3c,163mm,,,.pdf}
+@center @image{fig/chap2/Fig2.3c,120mm,,,.pdf}
 @sp 0.3
-@center @strong{Figure 2.3:} Two ways to combine 1, 2, 3, and 4 using pairs.
+@strong{Figure 2.3:} Two ways to combine 1, 2, 3, and 4 using pairs.
 @sp 0.8
 @end iftex
 @end quotation
@@ -6635,9 +6660,9 @@ nested @t{cons} operations:
 @end ifinfo
 @iftex
 @sp 0.1
-@center @image{fig/chap2/Fig2.4c,125mm,,,.pdf}
+@center @image{fig/chap2/Fig2.4c,75mm,,,.pdf}
 @sp 0.3
-@center @strong{Figure 2.4:} The sequence 1, 2, 3, 4 represented as a chain of pairs.
+@strong{Figure 2.4:} The sequence 1, 2, 3, 4 represented as a chain of pairs.
 @sp 0.5
 @end iftex
 @end quotation
@@ -6844,7 +6869,8 @@ Otherwise, @t{append} the @t{cdr} of @t{list1} and @t{list2}, and
 (define (append list1 list2)
   (if (null? list1)
       list2
-      (cons (car list1) (append (cdr list1) list2))))
+      (cons (car list1) 
+            (append (cdr list1) list2))))
 @end lisp
 
 @quotation
@@ -6884,9 +6910,11 @@ list of the values of the coins to use rather than an integer specifying which
 coins to use.  We could then have lists that defined each kind of currency:
 
 @lisp
-(define us-coins (list 50 25 10 5 1))
+(define us-coins 
+  (list 50 25 10 5 1))
 
-(define uk-coins (list 100 50 20 10 5 2 1 0.5))
+(define uk-coins 
+  (list 100 50 20 10 5 2 1 0.5))
 @end lisp
 
 We could then call @t{cc} as follows:
@@ -6903,14 +6931,19 @@ follows:
 @lisp
 (define (cc amount coin-values)
   (cond ((= amount 0) 1)
-        ((or (< amount 0) (no-more? coin-values)) 0)
+        ((or (< amount 0) 
+             (no-more? coin-values)) 
+         0)
         (else
-         (+ (cc amount
-                (except-first-denomination 
-                  coin-values))
-            (cc (- amount
-                   (first-denomination coin-values))
-                coin-values)))))
+         (+ (cc 
+             amount
+             (except-first-denomination 
+              coin-values))
+            (cc 
+             (- amount
+                (first-denomination 
+                 coin-values))
+             coin-values)))))
 @end lisp
 
 Define the procedures @code{first-denomination},
@@ -6993,7 +7026,8 @@ procedure scales each number in a list by a given factor:
   (if (null? items)
       nil
       (cons (* (car items) factor)
-            (scale-list (cdr items) factor))))
+            (scale-list (cdr items) 
+                        factor))))
 
 (scale-list (list 1 2 3 4 5) 10)
 @i{(10 20 30 40 50)}
@@ -7011,7 +7045,10 @@ the procedure to all the first elements of the lists, all the second elements
 of the lists, and so on, returning a list of the results.  For example:
 
 @lisp
-(map + (list 1 2 3) (list 40 50 60) (list 700 800 900))
+(map + 
+     (list 1 2 3) 
+     (list 40 50 60) 
+     (list 700 800 900))
 @i{(741 852 963)}
 
 (map (lambda (x y) (+ x (* 2 y)))
@@ -7114,7 +7151,8 @@ Louis then tries to fix his bug by interchanging the arguments to @t{cons}:
         answer
         (iter (cdr things)
               (cons answer
-                    (square (car things))))))
+                    (square 
+                     (car things))))))
   (iter items nil))
 @end lisp
 
@@ -7131,8 +7169,9 @@ all---@t{for-each} is used with procedures that perform an action, such as
 printing.  For example,
 
 @lisp
-(for-each (lambda (x) (newline) (display x))
-          (list 57 321 88))
+(for-each 
+ (lambda (x) (newline) (display x))
+ (list 57 321 88))
 @i{57}
 @i{321}
 @i{88}
@@ -7192,9 +7231,9 @@ shows the structure in @ref{Figure 2.5} viewed as a tree.
 @end ifinfo
 @iftex
 @sp 0.9
-@center @image{fig/chap2/Fig2.5c,155mm,,,.pdf}
+@center @image{fig/chap2/Fig2.5c,110mm,,,.pdf}
 @sp 0.7
-@center @strong{Figure 2.5:} Structure formed by @t{(cons (list 1 2) (list 3 4))}.
+@strong{Figure 2.5:} Structure formed by @t{(cons (list 1 2) (list 3 4))}.
 @sp 0.9
 @end iftex
 @end quotation
@@ -7219,7 +7258,7 @@ shows the structure in @ref{Figure 2.5} viewed as a tree.
 @sp 0.9
 @center @image{fig/chap2/Fig2.6a,38mm,,,.pdf}
 @sp 0.7
-@center @strong{Figure 2.6:} The list structure in @ref{Figure 2.5} viewed as a tree.
+@strong{Figure 2.6:} The list structure in @ref{Figure 2.5} viewed as a tree.
 @sp 0.9
 @end iftex
 @end quotation
@@ -7462,12 +7501,19 @@ where each number is multiplied by the factor.  The recursive plan for
 
 @lisp
 (define (scale-tree tree factor)
-  (cond ((null? tree) nil)
-        ((not (pair? tree)) (* tree factor))
-        (else (cons (scale-tree (car tree) factor)
-                    (scale-tree (cdr tree) factor)))))
+  (cond ((null? tree) 
+         nil)
+        ((not (pair? tree)) 
+         (* tree factor))
+        (else 
+         (cons (scale-tree (car tree) 
+                           factor)
+               (scale-tree (cdr tree) 
+                           factor)))))
 
-(scale-tree (list 1 (list 2 (list 3 4) 5) (list 6 7))
+(scale-tree (list 1 
+                  (list 2 (list 3 4) 5) 
+                  (list 6 7))
             10)
 @i{(10 (20 (30 40) 50) (60 70))}
 @end lisp
@@ -7512,7 +7558,8 @@ procedures) and also by using @t{map} and recursion.
 that @t{square-tree} could be defined as
 
 @lisp
-(define (square-tree tree) (tree-map square tree))
+(define (square-tree tree) 
+  (tree-map square tree))
 @end lisp
 @end quotation
 
@@ -7556,8 +7603,10 @@ argument and computes the sum of the squares of the leaves that are odd:
   (cond ((null? tree) 0)
         ((not (pair? tree))
          (if (odd? tree) (square tree) 0))
-        (else (+ (sum-odd-squares (car tree))
-                 (sum-odd-squares (cdr tree))))))
+        (else (+ (sum-odd-squares 
+                  (car tree))
+                 (sum-odd-squares 
+                  (cdr tree))))))
 @end lisp
 
 On the surface, this procedure is very different from the following one, which
@@ -7565,6 +7614,7 @@ constructs a list of all the even Fibonacci numbers @math{{\rm Fib}(k)}, where
 @math{k} is less than or equal to a given integer @math{n}:
 
 @lisp
+
 (define (even-fibs n)
   (define (next k)
     (if (> k n)
@@ -7628,19 +7678,6 @@ output of the map is then fed to an @newterm{accumulator}, which combines the
 elements using @t{+}, starting from an initial 0.  The plan for
 @t{even-fibs} is analogous.
 
-Unfortunately, the two procedure definitions above fail to exhibit this
-signal-flow structure.  For instance, if we examine the @t{sum-odd-squares}
-procedure, we find that the enumeration is implemented partly by the
-@t{null?} and @t{pair?} tests and partly by the tree-recursive structure
-of the procedure.  Similarly, the accumulation is found partly in the tests and
-partly in the addition used in the recursion.  In general, there are no
-distinct parts of either procedure that correspond to the elements in the
-signal-flow description.  Our two procedures decompose the computations in a
-different way, spreading the enumeration over the program and mingling it with
-the map, the filter, and the accumulation.  If we could organize our programs
-to make the signal-flow structure manifest in the procedures we write, this
-would increase the conceptual clarity of the resulting code.
-
 @float
 @anchor{Figure 2.7}
 @ifinfo
@@ -7664,7 +7701,7 @@ the commonality between the two programs.
 @end ifinfo
 @iftex
 @sp 0.4
-@center @image{fig/chap2/Fig2.7d,168mm,,,.pdf} 
+@center @image{fig/chap2/Fig2.7d,139mm,,,.pdf} 
 @c 187mm
 @sp 0.4
 @quotation
@@ -7675,6 +7712,19 @@ the commonality between the two programs.
 @sp 0.7
 @end iftex
 @end float
+
+Unfortunately, the two procedure definitions above fail to exhibit this
+signal-flow structure.  For instance, if we examine the @t{sum-odd-squares}
+procedure, we find that the enumeration is implemented partly by the
+@t{null?} and @t{pair?} tests and partly by the tree-recursive structure
+of the procedure.  Similarly, the accumulation is found partly in the tests and
+partly in the addition used in the recursion.  In general, there are no
+distinct parts of either procedure that correspond to the elements in the
+signal-flow description.  Our two procedures decompose the computations in a
+different way, spreading the enumeration over the program and mingling it with
+the map, the filter, and the accumulation.  If we could organize our programs
+to make the signal-flow structure manifest in the procedures we write, this
+would increase the conceptual clarity of the resulting code.
 
 @subsubheading Sequence Operations
 
@@ -7698,8 +7748,12 @@ predicate is accomplished by
   (cond ((null? sequence) nil)
         ((predicate (car sequence))
          (cons (car sequence)
-               (filter predicate (cdr sequence))))
-        (else (filter predicate (cdr sequence)))))
+               (filter 
+                predicate 
+                (cdr sequence))))
+        (else (filter 
+               predicate 
+               (cdr sequence)))))
 @end lisp
 
 For example,
@@ -7716,7 +7770,9 @@ Accumulations can be implemented by
   (if (null? sequence)
       initial
       (op (car sequence)
-          (accumulate op initial (cdr sequence)))))
+          (accumulate op 
+                      initial 
+                      (cdr sequence)))))
 
 (accumulate + 0 (list 1 2 3 4 5))
 @i{15}
@@ -7736,7 +7792,10 @@ sequence of integers in a given range, which we can do as follows:
 (define (enumerate-interval low high)
   (if (> low high)
       nil
-      (cons low (enumerate-interval (+ low 1) high))))
+      (cons low 
+            (enumerate-interval 
+             (+ low 1) 
+             high))))
 
 (enumerate-interval 2 7)
 @i{(2 3 4 5 6 7)}
@@ -7751,10 +7810,12 @@ sequence-manipulation procedures.}
 (define (enumerate-tree tree)
   (cond ((null? tree) nil)
         ((not (pair? tree)) (list tree))
-        (else (append (enumerate-tree (car tree))
-                      (enumerate-tree (cdr tree))))))
+        (else (append 
+               (enumerate-tree (car tree))
+               (enumerate-tree (cdr tree))))))
 
-(enumerate-tree (list 1 (list 2 (list 3 4)) 5))
+(enumerate-tree 
+ (list 1 (list 2 (list 3 4)) 5))
 @i{(1 2 3 4 5)}
 @end lisp
 
@@ -7768,8 +7829,9 @@ square each element, and sum the results:
   (accumulate +
               0
               (map square
-                   (filter odd?
-                           (enumerate-tree tree)))))
+                   (filter 
+                    odd?
+                    (enumerate-tree tree)))))
 @end lisp
 
 For @t{even-fibs}, we enumerate the integers from 0 to @math{n}, generate the
@@ -7778,11 +7840,13 @@ keep only the even elements, and accumulate the results into a list:
 
 @lisp
 (define (even-fibs n)
-  (accumulate cons
-              nil
-              (filter even?
-                      (map fib
-                           (enumerate-interval 0 n)))))
+  (accumulate 
+   cons
+   nil
+   (filter even?
+           (map 
+            fib
+            (enumerate-interval 0 n)))))
 @end lisp
 
 The value of expressing programs as sequence operations is that this helps us
@@ -7802,11 +7866,12 @@ of the first @math{n + 1} Fibonacci numbers:
 
 @lisp
 (define (list-fib-squares n)
-  (accumulate cons
-              nil
-              (map square
-                   (map fib
-                        (enumerate-interval 0 n)))))
+  (accumulate 
+   cons
+   nil
+   (map square
+        (map fib
+             (enumerate-interval 0 n)))))
 
 (list-fib-squares 10)
 @i{(0 1 1 4 9 25 64 169 441 1156 3025)}
@@ -7816,13 +7881,17 @@ We can rearrange the pieces and use them in computing the product of the squares
 integers in a sequence:
 
 @lisp
-(define (product-of-squares-of-odd-elements sequence)
+(define 
+  (product-of-squares-of-odd-elements 
+   sequence)
   (accumulate *
               1
               (map square
-                   (filter odd? sequence))))
+                   (filter odd? 
+                           sequence))))
 
-(product-of-squares-of-odd-elements (list 1 2 3 4 5))
+(product-of-squares-of-odd-elements 
+ (list 1 2 3 4 5))
 @i{225}
 @end lisp
 
@@ -7834,11 +7903,13 @@ selector @t{salary} that returns the salary of a record, and a predicate
 write
 
 @lisp
-(define (salary-of-highest-paid-programmer records)
+(define 
+  (salary-of-highest-paid-programmer records)
   (accumulate max
               0
               (map salary
-                   (filter programmer? records))))
+                   (filter programmer? 
+                           records))))
 @end lisp
 
 These examples give just a hint of the vast range of operations that can be
@@ -7869,7 +7940,8 @@ operations as accumulations:
 
 @lisp
 (define (map p sequence)
-  (accumulate (lambda (x y) @math{\langle}@var{??}@math{\rangle}) nil sequence))
+  (accumulate (lambda (x y) @math{\langle}@var{??}@math{\rangle}) 
+              nil sequence))
 
 (define (append seq1 seq2)
   (accumulate cons @math{\langle}@var{??}@math{\rangle} @math{\langle}@var{??}@math{\rangle}))
@@ -7929,10 +8001,12 @@ polynomial using Horner's rule.  Assume that the coefficients of the polynomial
 are arranged in a sequence, from @math{a_0} through @math{a_n}.
 
 @lisp
-(define (horner-eval x coefficient-sequence)
-  (accumulate (lambda (this-coeff higher-terms) @math{\langle}@var{??}@math{\rangle})
-              0
-              coefficient-sequence))
+(define 
+  (horner-eval x coefficient-sequence)
+  (accumulate 
+   (lambda (this-coeff higher-terms) @math{\langle}@var{??}@math{\rangle})
+   0
+   coefficient-sequence))
 @end lisp
 
 For example, to compute @math{1 + 3x + 5x^3 + x^5} at @math{x = 2} you
@@ -8025,12 +8099,12 @@ $$
 \eqalign{ 
 	\hbox{\tt (dot-product v w)} 		&\; {\rm returns\;the\;sum\;} 
 		\Sigma_i v_i w_i \cr
-	\hbox{\tt (matrix-*-vector m v)} 	&\; {\rm returns\;the\;vector\;} {\bf t}, 
-		\; {\rm where\;} t_i = \Sigma_j m_{ij} v_j \cr
-	\hbox{\tt (matrix-*-matrix m n)} 	&\; {\rm returns\;the\;matrix\;} {\bf p},
-		\; {\rm where\;} p_{ij} = \Sigma_k m_{ik} n_{kj} \cr
-	\hbox{\tt (transpose m)} 			&\; {\rm returns\;the\;matrix\;} {\bf n}, 
-		\; {\rm where\;} n_{ij} = m_{ji} \cr
+	\hbox{\tt (matrix-*-vector m v)} 	&\; {\rm returns\;the\;vector\;} {\bf t}, \cr
+		&\; {\rm where\;} t_i = \Sigma_j m_{ij} v_j \cr
+	\hbox{\tt (matrix-*-matrix m n)} 	&\; {\rm returns\;the\;matrix\;} {\bf p}, \cr
+		&\; {\rm where\;} p_{ij} = \Sigma_k m_{ik} n_{kj} \cr
+	\hbox{\tt (transpose m)} 			&\; {\rm returns\;the\;matrix\;} {\bf n}, \cr 
+		&\; {\rm where\;} n_{ij} = m_{ji} \cr
 } $$
 @end tex
 We can define the dot product as@footnote{This definition uses the extended
@@ -8099,10 +8173,14 @@ definitions of @t{reverse} (@ref{Exercise 2.18}) in terms of
 
 @lisp
 (define (reverse sequence)
-  (fold-right (lambda (x y) @math{\langle}@var{??}@math{\rangle}) nil sequence))
+  (fold-right (lambda (x y) @math{\langle}@var{??}@math{\rangle}) 
+              nil 
+              sequence))
 
 (define (reverse sequence)
-  (fold-left (lambda (x y) @math{\langle}@var{??}@math{\rangle}) nil sequence))
+  (fold-left (lambda (x y) @math{\langle}@var{??}@math{\rangle}) 
+             nil 
+             sequence))
 @end lisp
 @end quotation
 
@@ -8165,12 +8243,14 @@ elements rather than as a Lisp pair.  Thus, the ``pair'' @math{(i, j)} is
 represented as @t{(list i j)}, not @t{(cons i j)}.}
 
 @lisp
-(accumulate append
-            nil
-            (map (lambda (i)
-                   (map (lambda (j) (list i j))
-                        (enumerate-interval 1 (- i 1))))
-                 (enumerate-interval 1 n)))
+(accumulate 
+ append
+ nil
+ (map (lambda (i)
+        (map (lambda (j) 
+               (list i j))
+             (enumerate-interval 1 (- i 1))))
+      (enumerate-interval 1 n)))
 @end lisp
 
 The combination of mapping and accumulating with @t{append} is so common in
@@ -8197,7 +8277,9 @@ elements of the pair along with their sum:
 
 @lisp
 (define (make-pair-sum pair)
-  (list (car pair) (cadr pair) (+ (car pair) (cadr pair))))
+  (list (car pair) 
+        (cadr pair) 
+        (+ (car pair) (cadr pair))))
 @end lisp
 
 Combining all these steps yields the complete procedure:
@@ -8205,12 +8287,16 @@ Combining all these steps yields the complete procedure:
 @lisp
 (define (prime-sum-pairs n)
   (map make-pair-sum
-       (filter prime-sum?
-               (flatmap
-                (lambda (i)
-                  (map (lambda (j) (list i j))
-                       (enumerate-interval 1 (- i 1))))
-                (enumerate-interval 1 n)))))
+       (filter 
+        prime-sum?
+        (flatmap
+         (lambda (i)
+           (map (lambda (j) 
+                  (list i j))
+                (enumerate-interval 
+                 1 
+                 (- i 1))))
+         (enumerate-interval 1 n)))))
 @end lisp
 
 Nested mappings are also useful for sequences other than those that enumerate
@@ -8230,11 +8316,13 @@ make our programs self-documenting by using descriptive names.}
 
 @lisp
 (define (permutations s)
-  (if (null? s)              @r{; empty set?}
-      (list nil)             @r{; sequence containing empty set}
+  (if (null? s)   @r{; empty set?}
+      (list nil)  @r{; sequence containing empty set}
       (flatmap (lambda (x)
-                 (map (lambda (p) (cons x p))
-                      (permutations (remove x s))))
+                 (map (lambda (p) 
+                        (cons x p))
+                      (permutations 
+                       (remove x s))))
                s)))
 @end lisp
 
@@ -8284,7 +8372,6 @@ respect to the other queens.  This produces the sequence of all ways to place
 produce not only one solution, but all solutions to the puzzle.
 
 @float
-@quotation
 @anchor{Figure 2.8}
 @ifinfo
 @strong{Figure 2.8:} A solution to the eight-queens puzzle.
@@ -8310,13 +8397,12 @@ produce not only one solution, but all solutions to the puzzle.
 @end example
 @end ifinfo
 @iftex
-@sp 0.0
+@sp 0.7
 @center @image{fig/chap2/Fig2.8c,73mm,,,.pdf}
-@sp 0.4
+@sp 0.7
 @center @strong{Figure 2.8:} A solution to the eight-queens puzzle.
-@sp 0.6
+@sp 0.7
 @end iftex
-@end quotation
 @end float
 
 We implement this solution as a procedure @t{queens}, which returns a
@@ -8331,14 +8417,18 @@ first @math{k} columns of the board.
     (if (= k 0)
         (list empty-board)
         (filter
-         (lambda (positions) (safe? k positions))
+         (lambda (positions) 
+           (safe? k positions))
          (flatmap
           (lambda (rest-of-queens)
             (map (lambda (new-row)
-                   (adjoin-position new-row 
-                                    k 
-                                    rest-of-queens))
-                 (enumerate-interval 1 board-size)))
+                   (adjoin-position 
+                    new-row 
+                    k 
+                    rest-of-queens))
+                 (enumerate-interval 
+                  1 
+                  board-size)))
           (queen-cols (- k 1))))))
   (queen-cols board-size))
 @end lisp
@@ -8367,7 +8457,9 @@ in the @t{flatmap}, writing it as
 (flatmap
  (lambda (new-row)
    (map (lambda (rest-of-queens)
-          (adjoin-position new-row k rest-of-queens))
+          (adjoin-position new-row 
+                           k 
+                           rest-of-queens))
         (queen-cols (- k 1))))
  (enumerate-interval 1 board-size))
 @end lisp
@@ -8376,25 +8468,6 @@ Explain why this interchange makes the program run slowly.  Estimate how long
 it will take Louis's program to solve the eight-queens puzzle, assuming that
 the program in @ref{Exercise 2.42} solves the puzzle in time @math{T}.
 @end quotation
-
-@endpage
-@float
-@quotation
-@anchor{Figure 2.9}
-@ifinfo
-@strong{Figure 2.9:} Designs generated with the picture language.
-
-[two graphic images not included]
-@end ifinfo
-@end quotation
-@iftex
-@sp 0.1
-@center @image{fig/chap2/Fig2.9-bigger,185mm,,,.png}
-@sp 0.8
-@center @strong{Figure 2.9:} Designs generated with the picture language.
-@sp 1.0
-@end iftex
-@end float
 
 @node	2.2.4,  , 2.2.3, 2.2
 @subsection Example: A Picture Language
@@ -8414,6 +8487,23 @@ us to easily build arbitrarily complicated list structure, the operations in
 this language, which also satisfy the closure property, allow us to easily
 build arbitrarily complicated patterns.
 
+@float
+@quotation
+@anchor{Figure 2.9}
+@ifinfo
+@strong{Figure 2.9:} Designs generated with the picture language.
+
+[two graphic images not included]
+@end ifinfo
+@end quotation
+@iftex
+@sp 0.1
+@image{fig/chap2/Fig2.9-bigger,139mm,,,.png}
+@sp 0.6
+@center @strong{Figure 2.9:} Designs generated with the picture language.
+@sp 0.7
+@end iftex
+@end float
 
 @subsubheading The picture language
 
@@ -8421,28 +8511,6 @@ When we began our study of programming in @ref{1.1}, we emphasized the
 importance of describing a language by focusing on the language's primitives,
 its means of combination, and its means of abstraction.  We'll follow that
 framework here.
-
-@float
-@quotation
-@anchor{Figure 2.10}
-@ifinfo
-@strong{Figure 2.10:} Images produced by the @t{wave}
-painter, with respect to four different frames.  The frames, shown with dotted
-lines, are not part of the images.
-
-[four graphic images not included]
-@end ifinfo
-@iftex
-@sp 0.3
-@center @image{fig/chap2/Fig2.10,75mm,,,.pdf}
-@sp 0.4
-@strong{Figure 2.10:} Images produced by the @t{wave}
-painter, with respect to four different frames.  The frames, shown with dotted
-lines, are not part of the images.
-@sp 0.8
-@end iftex
-@end quotation
-@end float
 
 Part of the elegance of this picture language is that there is only one kind of
 element, called a @newterm{painter}.  A painter draws an image that is shifted
@@ -8508,16 +8576,27 @@ the very part and act of public duty.
 } The four images in figure 2.11 are drawn with respect to the same four
 frames as the @t{wave} images in figure 2.10.
 
-To combine images, we use various operations that construct new painters from
-given painters.  For example, the @t{beside} operation takes two painters
-and produces a new, compound painter that draws the first painter's image in
-the left half of the frame and the second painter's image in the right half of
-the frame.  Similarly, @t{below} takes two painters and produces a compound
-painter that draws the first painter's image below the second painter's image.
-Some operations transform a single painter to produce a new painter.  For
-example, @t{flip-vert} takes a painter and produces a painter that draws its
-image upside-down, and @t{flip-horiz} produces a painter that draws the
-original painter's image left-to-right reversed.
+@float
+@quotation
+@anchor{Figure 2.10}
+@ifinfo
+@strong{Figure 2.10:} Images produced by the @t{wave}
+painter, with respect to four different frames.  The frames, shown with dotted
+lines, are not part of the images.
+
+[four graphic images not included]
+@end ifinfo
+@iftex
+@sp 0.4
+@center @image{fig/chap2/Fig2.10,50mm,,,.pdf}
+@sp 0.5
+@strong{Figure 2.10:} Images produced by the @t{wave}
+painter, with respect to four different frames.  The frames, shown with dotted
+lines, are not part of the images.
+@sp 0.7
+@end iftex
+@end quotation
+@end float
 
 @float
 @quotation
@@ -8531,24 +8610,27 @@ permission of the @acronym{MIT} Museum).
 [four graphic images not included]
 @end ifinfo
 @iftex
-@sp 0.3
-@center @image{fig/chap2/Fig2.11,75mm,,,.pdf}
-@sp 0.4
+@sp 0.5
+@center @image{fig/chap2/Fig2.11,50mm,,,.pdf}
+@sp 0.5
 @strong{Figure 2.11:} Images of William Barton Rogers,
 founder and first president of @acronym{MIT}, painted with respect to the same
 four frames as in @ref{Figure 2.10} (original image from Wikimedia Commons).
-@sp 0.8
+@sp 0.1
 @end iftex
 @end quotation
 @end float
 
-@ref{Figure 2.12} shows the drawing of a painter called
-@t{wave4} that is built up in two stages starting from @t{wave}:
-
-@lisp
-(define wave2 (beside wave (flip-vert wave)))
-(define wave4 (below wave2 wave2))
-@end lisp
+To combine images, we use various operations that construct new painters from
+given painters.  For example, the @t{beside} operation takes two painters
+and produces a new, compound painter that draws the first painter's image in
+the left half of the frame and the second painter's image in the right half of
+the frame.  Similarly, @t{below} takes two painters and produces a compound
+painter that draws the first painter's image below the second painter's image.
+Some operations transform a single painter to produce a new painter.  For
+example, @t{flip-vert} takes a painter and produces a painter that draws its
+image upside-down, and @t{flip-horiz} produces a painter that draws the
+original painter's image left-to-right reversed.
 
 @float
 @quotation
@@ -8565,15 +8647,23 @@ from the @t{wave} painter of @ref{Figure 2.10}.
 @end lisp
 @end ifinfo
 @iftex
-@sp 0.3
-@center @image{fig/chap2/Fig2.12,100mm,,,.pdf}
-@sp 0.4
+@sp 0.5
+@center @image{fig/chap2/Fig2.12,105mm,,,.pdf}
+@sp 0.5
 @strong{Figure 2.12:} Creating a complex figure, starting
 from the @t{wave} painter of @ref{Figure 2.10}.
 @sp 0.7
 @end iftex
 @end quotation
 @end float
+
+@ref{Figure 2.12} shows the drawing of a painter called
+@t{wave4} that is built up in two stages starting from @t{wave}:
+
+@lisp
+(define wave2 (beside wave (flip-vert wave)))
+(define wave4 (below wave2 wave2))
+@end lisp
 
 In building up a complex image in this manner we are exploiting the fact that
 painters are closed under the language's means of combination.  The
@@ -8593,7 +8683,9 @@ abstract the pattern in @t{wave4} as
 
 @lisp
 (define (flipped-pairs painter)
-  (let ((painter2 (beside painter (flip-vert painter))))
+  (let ((painter2 
+         (beside painter 
+                 (flip-vert painter))))
     (below painter2 painter2)))
 @end lisp
 
@@ -8606,8 +8698,8 @@ and define @t{wave4} as an instance of this pattern:
 
 @float
 @anchor{Figure 2.13}
-@ifinfo
 @quotation
+@ifinfo
 @strong{Figure 2.13:} Recursive plans for @t{right-split} and @t{corner-split}.
 
 @example
@@ -8627,15 +8719,16 @@ and define @t{wave4} as an instance of this pattern:
 
        right-split n                    corner-split n
 @end example
-@end quotation
+
 @end ifinfo
 @iftex
-@sp 0.7
-@center @image{fig/chap2/Fig2.13a,187mm,,,.pdf}
+@sp 0.0
+@center @image{fig/chap2/Fig2.13a,125mm,,,.pdf}
 @sp 0.5
-@center @strong{Figure 2.13:} Recursive plans for @t{right-split} and @t{corner-split}.
-@sp 0.7
+@strong{Figure 2.13:} Recursive plans for @t{right-split} and @t{corner-split}.
+@sp 0.0
 @end iftex
+@end quotation
 @end float
 
 We can also define recursive operations.  Here's one that makes painters split
@@ -8646,8 +8739,10 @@ and @ref{Figure 2.14}:
 (define (right-split painter n)
   (if (= n 0)
       painter
-      (let ((smaller (right-split painter (- n 1))))
-        (beside painter (below smaller smaller)))))
+      (let ((smaller (right-split painter 
+                                  (- n 1))))
+        (beside painter 
+                (below smaller smaller)))))
 @end lisp
 
 We can produce balanced patterns by branching upwards as well as towards the
@@ -8658,12 +8753,16 @@ right (see @ref{Exercise 2.44}, @ref{Figure 2.13} and @ref{Figure 2.14}):
   (if (= n 0)
       painter
       (let ((up (up-split painter (- n 1)))
-            (right (right-split painter (- n 1))))
+            (right (right-split painter 
+                                (- n 1))))
         (let ((top-left (beside up up))
-              (bottom-right (below right right))
-              (corner (corner-split painter (- n 1))))
+              (bottom-right (below right 
+                                   right))
+              (corner (corner-split painter 
+                                    (- n 1))))
           (beside (below painter top-left)
-                  (below bottom-right corner))))))
+                  (below bottom-right 
+                         corner))))))
 @end lisp
 
 @float
@@ -8688,13 +8787,13 @@ symmetric @t{square-limit} designs as shown in @ref{Figure 2.9}.
 @end lisp
 @end ifinfo
 @iftex
-@sp 0.8
-@center @image{fig/chap2/Fig2.14b,140mm,,,.pdf}
-@sp 0.5
+@sp 0.0
+@center @image{fig/chap2/Fig2.14b,117mm,,,.pdf}
+@sp 0.6
 @strong{Figure 2.14:} The recursive operations
-@t{right-split} and @t{corner-@/split} applied to the painters @t{wave}
-and @t{rogers}.  Combining four @t{corner-split} figures produces
-symmetric @t{square-limit} designs as shown in @ref{Figure 2.9}.
+@t{right-@/split} and @t{corner-@/split} applied to the painters @t{wave}
+and @t{rogers}.  Combining four @t{corner-@/split} figures produces
+symmetric @t{square-@/limit} designs as shown in @ref{Figure 2.9}.
 @sp 0.0
 @end iftex
 @end quotation
@@ -8707,14 +8806,15 @@ pattern called @t{square-limit}, whose application to @t{wave} and
 @lisp
 (define (square-limit painter n)
   (let ((quarter (corner-split painter n)))
-    (let ((half (beside (flip-horiz quarter) quarter)))
+    (let ((half (beside (flip-horiz quarter) 
+                        quarter)))
       (below (flip-vert half) half))))
 @end lisp
 
 @quotation
 @strong{@anchor{Exercise 2.44}Exercise 2.44:} Define the procedure
 @t{up-split} used by @t{corner-@/split}.  It is similar to
-@t{right-split}, except that it switches the roles of @t{below} and
+@t{right-@/split}, except that it switches the roles of @t{below} and
 @t{beside}.
 @end quotation
 
@@ -8739,8 +8839,10 @@ respectively.
 @lisp
 (define (square-of-four tl tr bl br)
   (lambda (painter)
-    (let ((top (beside (tl painter) (tr painter)))
-          (bottom (beside (bl painter) (br painter))))
+    (let ((top (beside (tl painter) 
+                       (tr painter)))
+          (bottom (beside (bl painter) 
+                          (br painter))))
       (below bottom top))))
 @end lisp
 
@@ -8749,14 +8851,18 @@ follows:@footnote{Equivalently, we could write
 
 @lisp
 (define flipped-pairs
-  (square-of-four identity flip-vert identity flip-vert))
+  (square-of-four 
+   identity flip-vert identity flip-vert))
 @end lisp
 }
 
 @lisp
 (define (flipped-pairs painter)
-  (let ((combine4 (square-of-four identity flip-vert
-                                  identity flip-vert)))
+  (let ((combine4 
+         (square-of-four identity 
+                         flip-vert
+                         identity 
+                         flip-vert)))
     (combine4 painter)))
 @end lisp
 
@@ -8768,8 +8874,11 @@ procedure from @ref{Exercise 1.42}.}
 
 @lisp
 (define (square-limit painter n)
-  (let ((combine4 (square-of-four flip-horiz identity
-                                  rotate180 flip-vert)))
+  (let ((combine4 
+         (square-of-four flip-horiz 
+                         identity
+                         rotate180 
+                         flip-vert)))
     (combine4 (corner-split painter n))))
 @end lisp
 
@@ -8832,9 +8941,9 @@ vector    \    __--        edge1
 @iftex
 @sp 0.2
 @center @image{fig/chap2/Fig2.15a,80mm,,,.pdf}
-@sp 0.2
-@strong{Figure 2.15:} A frame is described by three vectors --- an origin and two edges.
 @sp 0.6
+@strong{Figure 2.15:} A frame is described by three vectors --- an origin and two edges.
+@sp 0.1
 @end iftex
 @end quotation
 @end float
@@ -8869,10 +8978,11 @@ correctly.}
   (lambda (v)
     (add-vect
      (origin-frame frame)
-     (add-vect (scale-vect (xcor-vect v)
-                           (edge1-frame frame))
-               (scale-vect (ycor-vect v)
-                           (edge2-frame frame))))))
+     (add-vect 
+      (scale-vect (xcor-vect v)
+                  (edge1-frame frame))
+      (scale-vect (ycor-vect v)
+                  (edge2-frame frame))))))
 @end lisp
 
 Observe that applying @t{frame-coord-map} to a frame returns a procedure
@@ -8955,8 +9065,10 @@ also uses the @t{for-each} procedure described in @ref{Exercise 2.23}.}
     (for-each
      (lambda (segment)
        (draw-line
-        ((frame-coord-map frame) (start-segment segment))
-        ((frame-coord-map frame) (end-segment segment))))
+        ((frame-coord-map frame) 
+         (start-segment segment))
+        ((frame-coord-map frame) 
+         (end-segment segment))))
      segment-list)))
 @end lisp
 
@@ -9032,24 +9144,30 @@ of its edge vectors.  Thus, arguments within the unit square specify a frame
 contained within the original frame.
 
 @lisp
-(define (transform-painter painter origin corner1 corner2)
+(define (transform-painter painter 
+                           origin 
+                           corner1
+                           corner2)
   (lambda (frame)
     (let ((m (frame-coord-map frame)))
       (let ((new-origin (m origin)))
-        (painter
-         (make-frame new-origin
-                     (sub-vect (m corner1) new-origin)
-                     (sub-vect (m corner2) new-origin)))))))
+        (painter (make-frame 
+                  new-origin
+                  (sub-vect (m corner1) 
+                            new-origin)
+                  (sub-vect (m corner2)
+                            new-origin)))))))
 @end lisp
 
 Here's how to flip painter images vertically:
 
 @lisp
 (define (flip-vert painter)
-  (transform-painter painter
-                     (make-vect 0.0 1.0)   @r{; new @t{origin}}
-                     (make-vect 1.0 1.0)   @r{; new end of @t{edge1}}
-                     (make-vect 0.0 0.0))) @r{; new end of @t{edge2}}
+  (transform-painter 
+   painter
+   (make-vect 0.0 1.0)   @r{; new @t{origin}}
+   (make-vect 1.0 1.0)   @r{; new end of @t{edge1}}
+   (make-vect 0.0 0.0))) @r{; new end of @t{edge2}}
 @end lisp
 
 Using @t{transform-painter}, we can easily define new transformations.
@@ -9101,15 +9219,17 @@ right half of the frame:
 (define (beside painter1 painter2)
   (let ((split-point (make-vect 0.5 0.0)))
     (let ((paint-left
-           (transform-painter painter1
-                              (make-vect 0.0 0.0)
-                              split-point
-                              (make-vect 0.0 1.0)))
+           (transform-painter 
+            painter1
+            (make-vect 0.0 0.0)
+            split-point
+            (make-vect 0.0 1.0)))
           (paint-right
-           (transform-painter painter2
-                              split-point
-                              (make-vect 1.0 0.0)
-                              (make-vect 0.5 1.0))))
+           (transform-painter
+            painter2
+            split-point
+            (make-vect 1.0 0.0)
+            (make-vect 0.5 1.0))))
       (lambda (frame)
         (paint-left frame)
         (paint-right frame)))))
@@ -9234,7 +9354,8 @@ If we can form compound data using symbols, we can have lists such as
 @lisp
 (a b c d)
 (23 45 17)
-((Norah 12) (Molly 9) (Anna 7) (Lauren 6) (Charlotte 4))
+((Norah 12) (Molly 9) (Anna 7) 
+ (Lauren 6) (Charlotte 4))
 @end lisp
 
 Lists containing symbols can look just like the expressions of our
@@ -9243,7 +9364,10 @@ language:
 @lisp
 (* (+ 23 45) (+ x 9))
 
-(define (fact n) (if (= n 1) 1 (* n (fact (- n 1)))))
+(define (fact n) 
+  (if (= n 1) 
+      1 
+      (* n (fact (- n 1)))))
 @end lisp
 
 In order to manipulate symbols we need a new element in our language: the
@@ -9379,14 +9503,16 @@ in response to evaluating each of the following expressions?
 example,
 
 @lisp
-(equal? '(this is a list) '(this is a list))
+(equal? '(this is a list) 
+        '(this is a list))
 @end lisp
 
 @noindent
 is true, but
 
 @lisp
-(equal? '(this is a list) '(this (is a) list))
+(equal? '(this is a list) 
+        '(this (is a) list))
 @end lisp
 
 @noindent
@@ -9447,7 +9573,6 @@ symbolic-differentiation program that handles expressions that are built up
 using only the operations of addition and multiplication with two arguments.
 Differentiation of any such expression can be carried out by applying the
 following reduction rules:
-
 @ifinfo
 
 @example
@@ -9474,17 +9599,16 @@ d(uv)     / dv \     / du \
 %&{{\it dc} \over {\it dx}} 		= 0, 
 %	\quad {\rm for\ } c\ {\rm a\ constant\ or\ a\ variable\ different\ from\ } x \cr     
 %&{{\it dx} \over {\it dx}} 		= 1 \cr
-%&{{\it d\,(\!u + v)} \over {\it dx}} 	= {{\it du} \over {\it dx}} + {{\it dv} \over {\it dx}} \cr
-%&{{\it d\,(\!uv)} \over {\it dx}} 	= u {{\it dv} \over {\it dx}} + v {{\it du} \over {\it dx}} \cr
+%&{{\it d(u + v)} \over {\it dx}} 	= {{\it du} \over {\it dx}} + {{\it dv} \over {\it dx}} \cr
+%&{{\it d(uv)} \over {\it dx}} 	= u {{\it dv} \over {\it dx}} + v {{\it du} \over {\it dx}} \cr
 %} $$
 %
 $$ {{\it dc} \over {\it dx}} 		= 0, 
 	\quad {\rm for\ } c\ {\rm a\ constant\ or\ a\ variable\ different\ from\ } x, $$      
 $$ {{\it dx} \over {\it dx}} 		= 1, $$
-$$ {{\it d\,(\!u + v)} \over {\it dx}} 	= {{\it du} \over {\it dx}} + {{\it dv} \over {\it dx}}, $$
-$$ {{\it d\,(\!uv)} \over {\it dx}} 	= u {{\it dv} \over {\it dx}} + v {{\it du} \over {\it dx}}. $$
+$$ {{\it d(u + v)} \over {\it dx}} 	= {{\it du} \over {\it dx}} + {{\it dv} \over {\it dx}}, $$
+$$ {{\it d(uv)} \over {\it dx}} 	= u {{\it dv} \over {\it dx}} + v {{\it du} \over {\it dx}}. $$
 @end tex
-
 Observe that the latter two rules are recursive in nature.  That is, to obtain
 the derivative of a sum we first find the derivatives of the terms and add
 them.  Each of the terms may in turn be an expression that needs to be
@@ -9502,7 +9626,7 @@ should also be able to construct expressions from parts.  Let us assume that we
 already have procedures to implement the following selectors, constructors, and
 predicates:
 
-@example
+@smallexample
 (variable? e)          @r{Is @t{e} a variable?}
 (same-variable? v1 v2) @r{Are @t{v1} and @t{v2} the same variable?}
 (sum? e)               @r{Is @t{e} a sum?}
@@ -9513,7 +9637,7 @@ predicates:
 (multiplier e)         @r{Multiplier of the product @t{e}.}
 (multiplicand e)       @r{Multiplicand of the product @t{e}.}
 (make-product m1 m2)   @r{Construct the product of @t{m1} and @t{m2}.}
-@end example
+@end smallexample
 
 Using these, and the primitive predicate @t{number?}, which identifies
 numbers, we can express the differentiation rules as the following procedure:
@@ -9528,12 +9652,15 @@ numbers, we can express the differentiation rules as the following procedure:
                    (deriv (augend exp) var)))
         ((product? exp)
          (make-sum
-           (make-product (multiplier exp)
-                         (deriv (multiplicand exp) var))
-           (make-product (deriv (multiplier exp) var)
-                         (multiplicand exp))))
+          (make-product 
+           (multiplier exp)
+           (deriv (multiplicand exp) var))
+          (make-product 
+           (deriv (multiplier exp) var)
+           (multiplicand exp))))
         (else
-         (error "unknown expression type -- DERIV" exp))))
+         (error "unknown expression type 
+                 -- DERIV" exp))))
 @end lisp
 
 This @t{deriv} procedure incorporates the complete differentiation
@@ -9567,15 +9694,19 @@ Two variables are the same if the symbols representing them are @t{eq?}:
 
 @lisp
 (define (same-variable? v1 v2)
-  (and (variable? v1) (variable? v2) (eq? v1 v2)))
+  (and (variable? v1)
+       (variable? v2)
+       (eq? v1 v2)))
 @end lisp
 
 @item
 Sums and products are constructed as lists:
 
 @lisp
-(define (make-sum a1 a2) (list '+ a1 a2))
-(define (make-product m1 m2) (list '* m1 m2))
+(define (make-sum a1 a2) 
+  (list '+ a1 a2))
+(define (make-product m1 m2) 
+  (list '* m1 m2))
 @end lisp
 
 @item
@@ -9653,7 +9784,7 @@ d(xy)
 
 @end ifinfo
 @tex
-$$ {{\it d\,(xy)} \over {\it dx}} = x \cdot 0 + 1 \cdot y $$
+$$ {{\it d(xy)} \over {\it dx}} = x \cdot 0 + 1 \cdot y $$
 @end tex
 @noindent
 but we would like the program to know that @math{x \cdot 0 = 0}, @math{1 \cdot y = y},
@@ -9672,9 +9803,12 @@ the other summand.
 
 @lisp
 (define (make-sum a1 a2)
-  (cond ((=number? a1 0) a2)
-        ((=number? a2 0) a1)
-        ((and (number? a1) (number? a2)) (+ a1 a2))
+  (cond ((=number? a1 0) 
+         a2)
+        ((=number? a2 0) 
+         a1)
+        ((and (number? a1) (number? a2)) 
+         (+ a1 a2))
         (else (list '+ a1 a2))))
 @end lisp
 
@@ -9691,10 +9825,15 @@ times anything is 0 and 1 times anything is the thing itself:
 
 @lisp
 (define (make-product m1 m2)
-  (cond ((or (=number? m1 0) (=number? m2 0)) 0)
-        ((=number? m1 1) m2)
-        ((=number? m2 1) m1)
-        ((and (number? m1) (number? m2)) (* m1 m2))
+  (cond ((or (=number? m1 0) 
+             (=number? m2 0)) 
+         0)
+        ((=number? m1 1) 
+         m2)
+        ((=number? m2 1) 
+         m1)
+        ((and (number? m1) (number? m2)) 
+         (* m1 m2))
         (else (list '* m1 m2))))
 @end lisp
 
@@ -9731,7 +9870,7 @@ d(u^n)            du
 
 @end ifinfo
 @tex
-$$ {{\it d\,(u^n\,)} \over {\it dx}} = nu^{n-1} {{\it du} \over {\it dx}} $$
+$$ {{\it d(u^n)} \over {\it dx}} = nu^{n-1} {{\it du} \over {\it dx}} $$
 @end tex
 @noindent
 by adding a new clause to the @t{deriv} program and defining appropriate
@@ -9866,11 +10005,14 @@ resulting procedure:
 
 @lisp
 (define (intersection-set set1 set2)
-  (cond ((or (null? set1) (null? set2)) '())
+  (cond ((or (null? set1) (null? set2)) 
+         '())
         ((element-of-set? (car set1) set2)
          (cons (car set1)
-               (intersection-set (cdr set1) set2)))
-        (else (intersection-set (cdr set1) set2))))
+               (intersection-set (cdr set1) 
+                                 set2)))
+        (else (intersection-set (cdr set1) 
+                                set2))))
 @end lisp
 
 In designing a representation, one of the issues we should be concerned with is
@@ -9966,12 +10108,17 @@ procedure:
       (let ((x1 (car set1)) (x2 (car set2)))
         (cond ((= x1 x2)
                (cons x1
-                     (intersection-set (cdr set1)
-                                       (cdr set2))))
+                     (intersection-set 
+                      (cdr set1)
+                      (cdr set2))))
               ((< x1 x2)
-               (intersection-set (cdr set1) set2))
+               (intersection-set 
+                (cdr set1) 
+                set2))
               ((< x2 x1)
-               (intersection-set set1 (cdr set2)))))))
+               (intersection-set 
+                set1 
+                (cdr set2)))))))
 @end lisp
 
 To estimate the number of steps required by this process, observe that at each
@@ -10080,9 +10227,13 @@ described above:
   (cond ((null? set) false)
         ((= x (entry set)) true)
         ((< x (entry set))
-         (element-of-set? x (left-branch set)))
+         (element-of-set? 
+          x 
+          (left-branch set)))
         ((> x (entry set))
-         (element-of-set? x (right-branch set)))))
+         (element-of-set? 
+          x 
+          (right-branch set)))))
 @end lisp
 
 Adjoining an item to a set is implemented similarly and also requires
@@ -10100,13 +10251,17 @@ branches.  Here is the procedure:
   (cond ((null? set) (make-tree x '() '()))
         ((= x (entry set)) set)
         ((< x (entry set))
-         (make-tree (entry set)
-                    (adjoin-set x (left-branch set))
-                    (right-branch set)))
+         (make-tree 
+          (entry set)
+          (adjoin-set x (left-branch set))
+          (right-branch set)))
         ((> x (entry set))
-         (make-tree (entry set)
-                    (left-branch set)
-                    (adjoin-set x (right-branch set))))))
+         (make-tree
+          (entry set)
+          (left-branch set)
+          (adjoin-set 
+           x 
+           (right-branch set))))))
 @end lisp
 
 The above claim that searching the tree can be performed in a logarithmic
@@ -10170,19 +10325,22 @@ procedures converts a binary tree to a list.
 (define (tree->list-1 tree)
   (if (null? tree)
       '()
-      (append (tree->list-1 (left-branch tree))
-              (cons (entry tree)
-                    (tree->list-1 
-                      (right-branch tree))))))
+      (append 
+       (tree->list-1 
+        (left-branch tree))
+       (cons (entry tree)
+             (tree->list-1 
+              (right-branch tree))))))
 (define (tree->list-2 tree)
   (define (copy-to-list tree result-list)
     (if (null? tree)
         result-list
-        (copy-to-list (left-branch tree)
-                      (cons (entry tree)
-                            (copy-to-list 
-                              (right-branch tree)
-                              result-list)))))
+        (copy-to-list 
+         (left-branch tree)
+         (cons (entry tree)
+               (copy-to-list 
+                (right-branch tree)
+                result-list)))))
   (copy-to-list tree '()))
 @end lisp
 
@@ -10203,35 +10361,49 @@ which one grows more slowly?
 
 @quotation
 @strong{@anchor{Exercise 2.64}Exercise 2.64:} The following procedure
-@t{list->tree} converts an ordered list to a balanced binary tree.  The
+@t{list->@/tree} converts an ordered list to a balanced binary tree.  The
 helper procedure @t{partial-tree} takes as arguments an integer @math{n} and
 list of at least @math{n} elements and constructs a balanced tree containing the
 first @math{n} elements of the list.  The result returned by @t{partial-tree}
 is a pair (formed with @t{cons}) whose @t{car} is the constructed tree
 and whose @t{cdr} is the list of elements not included in the tree.
 
-@smalllisp
+@lisp
 (define (list->tree elements)
-  (car (partial-tree elements (length elements))))
+  (car (partial-tree elements 
+                     (length elements))))
 
 (define (partial-tree elts n)
   (if (= n 0)
       (cons '() elts)
-      (let ((left-size (quotient (- n 1) 2)))
-        (let ((left-result (partial-tree elts left-size)))
-          (let ((left-tree (car left-result))
-                (non-left-elts (cdr left-result))
-                (right-size (- n (+ left-size 1))))
-            (let ((this-entry (car non-left-elts))
-                  (right-result (partial-tree 
-                                  (cdr non-left-elts)
-                                  right-size)))
-              (let ((right-tree (car right-result))
-                    (remaining-elts (cdr right-result)))
-                (cons (make-tree 
-                        this-entry left-tree right-tree)
-                      remaining-elts))))))))
-@end smalllisp
+      (let ((left-size 
+             (quotient (- n 1) 2)))
+        (let ((left-result 
+               (partial-tree elts 
+                             left-size)))
+          (let ((left-tree 
+                 (car left-result))
+                (non-left-elts 
+                 (cdr left-result))
+                (right-size 
+                 (- n (+ left-size 1))))
+            (let ((this-entry 
+                   (car non-left-elts))
+                  (right-result 
+                   (partial-tree 
+                    (cdr non-left-elts)
+                    right-size)))
+              (let ((right-tree 
+                     (car right-result))
+                    (remaining-elts 
+                     (cdr right-result)))
+                (cons 
+                 (make-tree 
+                  this-entry 
+                  left-tree 
+                  right-tree)
+                 remaining-elts))))))))
+@end lisp
 
 @enumerate a
 
@@ -10285,9 +10457,12 @@ an unordered list, we could use
 @lisp
 (define (lookup given-key set-of-records)
   (cond ((null? set-of-records) false)
-        ((equal? given-key (key (car set-of-records)))
+        ((equal? given-key 
+                 (key (car set-of-records)))
          (car set-of-records))
-        (else (lookup given-key (cdr set-of-records)))))
+        (else 
+         (lookup given-key 
+                 (cdr set-of-records)))))
 @end lisp
 
 Of course, there are better ways to represent large sets than as unordered
@@ -10318,12 +10493,11 @@ representing data as sequences of ones and zeros (bits).  For example, the
 ASCII standard code used to represent text in computers encodes each character
 as a sequence of seven bits.  Using seven bits allows us to distinguish @math{2^7},
 or 128, possible different characters.  In general, if we want to distinguish
-@math{n} different symbols, we will need to use @math{\log_2\!n} bits per
+@math{n} different symbols, we will need to use @math{\log_2 n} bits per
 symbol.  If all our messages are made up of the eight symbols A, B, C, D, E, F,
 G, and H, we can choose a code with three bits per character, for example
 
 @example
-
 A 000   C 010   E 100   G 110
 B 001   D 011   F 101   H 111
 @end example
@@ -10339,7 +10513,8 @@ BACADAEAFABBAAAGAH
 is encoded as the string of 54 bits
 
 @example
-001000010000011000100000101000001001000000000110000111
+001000010000011000100000101
+000001001000000000110000111
 @end example
 
 Codes such as ASCII and the A-through-H code above are known as
@@ -10366,6 +10541,7 @@ With this code, the same message as above is encoded as the string
 100010100101101100011010100100000111001111
 @end example
 
+@noindent
 This string contains 42 bits, so it saves more than 20% in space in comparison
 with the fixed-length code shown above.
 
@@ -10421,7 +10597,7 @@ start again at the root with the rest of the string 1010, so we move right,
 left, right, left and reach C.  Thus, the entire message is BAC.
 
 @float
-@quotation
+@c @quotation
 @anchor{Figure 2.18}
 @ifinfo
 @strong{Figure 2.18:} A Huffman encoding tree.
@@ -10446,11 +10622,11 @@ left, right, left and reach C.  Thus, the entire message is BAC.
 @iftex
 @sp 1.0
 @center @image{fig/chap2/Fig2.18a,138mm,,,.pdf}
-@sp 0.7
+@sp 1.0
 @center @strong{Figure 2.18:} A Huffman encoding tree.
 @sp 1.0
 @end iftex
-@end quotation
+@c @end quotation
 @end float
 
 @subsubheading Generating Huffman trees
@@ -10478,16 +10654,22 @@ right branches. The process stops when there is only one node left, which is
 the root of the entire tree.  Here is how the Huffman tree of @ref{Figure 2.18}
 was generated:
 
-@smallexample
-Initial leaves @{(A 8) (B 3) (C 1) (D 1) (E 1) (F 1) (G 1) (H 1)@}
-Merge          @{(A 8) (B 3) (@{C D@} 2) (E 1) (F 1) (G 1) (H 1)@}
-Merge          @{(A 8) (B 3) (@{C D@} 2) (@{E F@} 2) (G 1) (H 1)@}
-Merge          @{(A 8) (B 3) (@{C D@} 2) (@{E F@} 2) (@{G H@} 2)@}
-Merge          @{(A 8) (B 3) (@{C D@} 2) (@{E F G H@} 4)@}
-Merge          @{(A 8) (@{B C D@} 5) (@{E F G H@} 4)@}
+@example
+Initial leaves @{(A 8) (B 3) (C 1) (D 1) 
+                (E 1) (F 1) (G 1) (H 1)@}
+Merge          @{(A 8) (B 3) (@{C D@} 2) 
+                (E 1) (F 1) (G 1) (H 1)@}
+Merge          @{(A 8) (B 3) (@{C D@} 2) 
+                (@{E F@} 2) (G 1) (H 1)@}
+Merge          @{(A 8) (B 3) (@{C D@} 2) 
+                (@{E F@} 2) (@{G H@} 2)@}
+Merge          @{(A 8) (B 3) (@{C D@} 2) 
+                (@{E F G H@} 4)@}
+Merge          @{(A 8) (@{B C D@} 5) 
+                (@{E F G H@} 4)@}
 Merge          @{(A 8) (@{B C D E F G H@} 9)@}
 Final merge    @{(@{A B C D E F G H@} 17)@}
-@end smallexample
+@end example
 
 The algorithm does not always specify a unique tree, because there may not be
 unique smallest-weight nodes at each step.  Also, the choice of the order in
@@ -10529,7 +10711,8 @@ form the union by using the @t{append} procedure we defined in
 (define (make-code-tree left right)
   (list left
         right
-        (append (symbols left) (symbols right))
+        (append (symbols left) 
+                (symbols right))
         (+ (weight left) (weight right))))
 @end lisp
 
@@ -10568,17 +10751,22 @@ arguments a list of zeros and ones, together with a Huffman tree.
     (if (null? bits)
         '()
         (let ((next-branch
-               (choose-branch (car bits) current-branch)))
+               (choose-branch 
+                (car bits) 
+                current-branch)))
           (if (leaf? next-branch)
-              (cons (symbol-leaf next-branch)
-                    (decode-1 (cdr bits) tree))
-              (decode-1 (cdr bits) next-branch)))))
+              (cons 
+               (symbol-leaf next-branch)
+               (decode-1 (cdr bits) tree))
+              (decode-1 (cdr bits) 
+                        next-branch)))))
   (decode-1 bits tree))
 
 (define (choose-branch bit branch)
   (cond ((= bit 0) (left-branch branch))
         ((= bit 1) (right-branch branch))
-        (else (error "bad bit -- CHOOSE-BRANCH" bit))))
+        (else (error "bad bit 
+               -- CHOOSE-BRANCH" bit))))
 @end lisp
 
 The procedure @t{decode-1} takes two arguments: the list of remaining bits
@@ -10609,9 +10797,11 @@ the set is never already in it.
 @lisp
 (define (adjoin-set x set)
   (cond ((null? set) (list x))
-        ((< (weight x) (weight (car set))) (cons x set))
-        (else (cons (car set)
-                    (adjoin-set x (cdr set))))))
+        ((< (weight x) (weight (car set))) 
+         (cons x set))
+        (else 
+         (cons (car set)
+               (adjoin-set x (cdr set))))))
 @end lisp
 
 The following procedure takes a list of symbol-frequency pairs such as
@@ -10623,9 +10813,10 @@ leaves, ready to be merged according to the Huffman algorithm:
   (if (null? pairs)
       '()
       (let ((pair (car pairs)))
-        (adjoin-set (make-leaf (car pair)    @r{; symbol}
-                               (cadr pair))  @r{; frequency}
-                    (make-leaf-set (cdr pairs))))))
+        (adjoin-set 
+         (make-leaf (car pair)    @r{; symbol}
+                    (cadr pair))  @r{; frequency}
+         (make-leaf-set (cdr pairs))))))
 @end lisp
 
 @quotation
@@ -10634,13 +10825,16 @@ sample message:
 
 @lisp
 (define sample-tree
-  (make-code-tree (make-leaf 'A 4)
-                  (make-code-tree
-                   (make-leaf 'B 2)
-                   (make-code-tree (make-leaf 'D 1)
-                                   (make-leaf 'C 1)))))
+  (make-code-tree 
+   (make-leaf 'A 4)
+   (make-code-tree
+    (make-leaf 'B 2)
+    (make-code-tree 
+     (make-leaf 'D 1)
+     (make-leaf 'C 1)))))
 
-(define sample-message '(0 1 1 0 0 1 0 1 0 1 1 1 0))
+(define sample-message 
+  '(0 1 1 0 0 1 0 1 0 1 1 1 0))
 @end lisp
 
 Use the @t{decode} procedure to decode the message, and give the result.
@@ -10655,8 +10849,10 @@ encoded message.
 (define (encode message tree)
   (if (null? message)
       '()
-      (append (encode-symbol (car message) tree)
-              (encode (cdr message) tree))))
+      (append 
+       (encode-symbol (car message) 
+                      tree)
+       (encode (cdr message) tree))))
 @end lisp
 
 @t{Encode-symbol} is a procedure, which you must write, that returns the
@@ -10675,7 +10871,8 @@ algorithm.
 
 @lisp
 (define (generate-huffman-tree pairs)
-  (successive-merge (make-leaf-set pairs)))
+  (successive-merge 
+   (make-leaf-set pairs)))
 @end lisp
 
 @t{Make-leaf-set} is the procedure given above that transforms the list of
@@ -10838,11 +11035,11 @@ and install alternative representations.
 @end quotation
 @end ifinfo
 @iftex
-@sp 0.6
-@center @image{fig/chap2/Fig2.19a,178mm,,,.pdf}
-@sp 0.6
-@center @strong{Figure 2.19:} Data-abstraction barriers in the complex-number system.
-@sp 0.1
+@sp 0.9
+@center @image{fig/chap2/Fig2.19a,139mm,,,.pdf}
+@sp 0.9
+@strong{Figure 2.19:} Data-abstraction barriers in the complex-number system.
+@sp 0.9
 @end iftex
 @end float
 
@@ -10895,14 +11092,14 @@ Imaginary-part(z_1 + z_2) = Imaginary-part(z_1) + Imaginary-part(z_2)
 @tex
 $$ \eqalign{
 \hbox{Real-part} (z_1 + z_2)\; 		&= 
-	\hbox{ Real-part} (z_1)\; + \hbox{ Real-part} (z_2) \cr
+	\hbox{ Real-part} (z_1)\; \cr &+ \hbox{ Real-part} (z_2) \cr
 \hbox{Imaginary-part} (z_1 + z_2)\; 	&= 
-	\hbox{ Imaginary-part} (z_1)\; + \hbox{ Imaginary-part} (z_2) \cr 
+	\hbox{ Imaginary-part} (z_1)\; \cr &+ \hbox{ Imaginary-part} (z_2) \cr 
 } $$
 @end tex
 
 @float
-@quotation
+@c @quotation
 @anchor{Figure 2.20}
 @ifinfo
 @strong{Figure 2.20:} Complex numbers as points in the plane.
@@ -10923,13 +11120,13 @@ $$ \eqalign{
 @end example
 @end ifinfo
 @iftex
-@sp 0.2
-@center @image{fig/chap2/Fig2.20,140mm,,,.pdf}
-@sp 0.4
+@sp 0.5
+@center @image{fig/chap2/Fig2.20,139mm,,,.pdf}
+@sp 0.5
 @center @strong{Figure 2.20:} Complex numbers as points in the plane.
-@sp 0.9
+@sp 1.0
 @end iftex
-@end quotation
+@c @end quotation
 @end float
 
 When multiplying complex numbers, it is more natural to think in terms of
@@ -10976,7 +11173,8 @@ with specified magnitude and angle.  These procedures have the property that,
 for any complex number @t{z}, both
 
 @lisp
-(make-from-real-imag (real-part z) (imag-part z))
+(make-from-real-imag (real-part z) 
+                     (imag-part z))
 @end lisp
 
 @noindent
@@ -10998,26 +11196,24 @@ terms of magnitudes and angles:
 
 @lisp
 (define (add-complex z1 z2)
-  (make-from-real-imag (+ (real-part z1) (real-part z2))
-                       (+ (imag-part z1) (imag-part z2))))
-@end lisp
+  (make-from-real-imag 
+   (+ (real-part z1) (real-part z2))
+   (+ (imag-part z1) (imag-part z2))))
 
-@lisp
 (define (sub-complex z1 z2)
-  (make-from-real-imag (- (real-part z1) (real-part z2))
-                       (- (imag-part z1) (imag-part z2))))
-@end lisp
+  (make-from-real-imag 
+   (- (real-part z1) (real-part z2))
+   (- (imag-part z1) (imag-part z2))))
 
-@lisp
 (define (mul-complex z1 z2)
-  (make-from-mag-ang (* (magnitude z1) (magnitude z2))
-                     (+ (angle z1) (angle z2))))
-@end lisp
+  (make-from-mag-ang 
+   (* (magnitude z1) (magnitude z2))
+   (+ (angle z1) (angle z2))))
 
-@lisp
 (define (div-complex z1 z2)
-  (make-from-mag-ang (/ (magnitude z1) (magnitude z2))
-                     (- (angle z1) (angle z2))))
+  (make-from-mag-ang 
+   (/ (magnitude z1) (magnitude z2))
+   (- (angle z1) (angle z2))))
 @end lisp
 
 To complete the complex-number package, we must choose a representation and we
@@ -11065,12 +11261,14 @@ representation is therefore given by the following selectors and constructors:
 (define (imag-part z) (cdr z))
 
 (define (magnitude z)
-  (sqrt (+ (square (real-part z)) (square (imag-part z)))))
+  (sqrt (+ (square (real-part z)) 
+           (square (imag-part z)))))
 
 (define (angle z)
   (atan (imag-part z) (real-part z)))
 
-(define (make-from-real-imag x y) (cons x y))
+(define (make-from-real-imag x y) 
+  (cons x y))
 
 (define (make-from-mag-ang r a)
   (cons (* r (cos a)) (* r (sin a))))
@@ -11096,7 +11294,8 @@ representation is:
   (cons (sqrt (+ (square x) (square y)))
         (atan y x)))
 
-(define (make-from-mag-ang r a) (cons r a))
+(define (make-from-mag-ang r a) 
+  (cons r a))
 @end lisp
 
 The discipline of data abstraction ensures that the same implementation of
@@ -11143,12 +11342,14 @@ way to implement this is to use ordinary list structure:
 (define (type-tag datum)
   (if (pair? datum)
       (car datum)
-      (error "Bad tagged datum -- TYPE-TAG" datum)))
+      (error "Bad tagged datum 
+              -- TYPE-TAG" datum)))
 
 (define (contents datum)
   (if (pair? datum)
       (cdr datum)
-      (error "Bad tagged datum -- CONTENTS" datum)))
+      (error "Bad tagged datum 
+              -- CONTENTS" datum)))
 @end lisp
 
 Using these procedures, we can define predicates @t{rectangular?}  and
@@ -11178,19 +11379,24 @@ names of hers.  Here is Ben's revised rectangular representation from
 (define (imag-part-rectangular z) (cdr z))
 
 (define (magnitude-rectangular z)
-  (sqrt (+ (square (real-part-rectangular z))
-           (square (imag-part-rectangular z)))))
+  (sqrt (+ (square 
+            (real-part-rectangular z))
+           (square 
+            (imag-part-rectangular z)))))
 
 (define (angle-rectangular z)
   (atan (imag-part-rectangular z)
         (real-part-rectangular z)))
 
-(define (make-from-real-imag-rectangular x y)
+(define 
+  (make-from-real-imag-rectangular x y)
   (attach-tag 'rectangular (cons x y)))
 
-(define (make-from-mag-ang-rectangular r a)
-  (attach-tag 'rectangular
-              (cons (* r (cos a)) (* r (sin a)))))
+(define 
+  (make-from-mag-ang-rectangular r a)
+  (attach-tag 
+   'rectangular
+   (cons (* r (cos a)) (* r (sin a)))))
 @end lisp
 
 @noindent
@@ -11198,19 +11404,22 @@ and here is Alyssa's revised polar representation:
 
 @lisp
 (define (real-part-polar z)
-  (* (magnitude-polar z) (cos (angle-polar z))))
+  (* (magnitude-polar z) 
+     (cos (angle-polar z))))
 
 (define (imag-part-polar z)
-  (* (magnitude-polar z) (sin (angle-polar z))))
+  (* (magnitude-polar z) 
+     (sin (angle-polar z))))
 
 (define (magnitude-polar z) (car z))
 
 (define (angle-polar z) (cdr z))
 
 (define (make-from-real-imag-polar x y)
-  (attach-tag 'polar
-               (cons (sqrt (+ (square x) (square y)))
-                     (atan y x))))
+  (attach-tag 
+   'polar
+   (cons (sqrt (+ (square x) (square y)))
+         (atan y x))))
 
 (define (make-from-mag-ang-polar r a)
   (attach-tag 'polar (cons r a)))
@@ -11227,31 +11436,43 @@ procedure as required:
 @lisp
 (define (real-part z)
   (cond ((rectangular? z)
-         (real-part-rectangular (contents z)))
+         (real-part-rectangular 
+          (contents z)))
         ((polar? z)
-         (real-part-polar (contents z)))
-        (else (error "Unknown type -- REAL-PART" z))))
+         (real-part-polar 
+          (contents z)))
+        (else (error "Unknown type 
+               -- REAL-PART" z))))
 
 (define (imag-part z)
   (cond ((rectangular? z)
-         (imag-part-rectangular (contents z)))
+         (imag-part-rectangular 
+          (contents z)))
         ((polar? z)
-         (imag-part-polar (contents z)))
-        (else (error "Unknown type -- IMAG-PART" z))))
+         (imag-part-polar
+          (contents z)))
+        (else (error "Unknown type 
+               -- IMAG-PART" z))))
 
 (define (magnitude z)
   (cond ((rectangular? z)
-         (magnitude-rectangular (contents z)))
+         (magnitude-rectangular 
+          (contents z)))
         ((polar? z)
-         (magnitude-polar (contents z)))
-        (else (error "Unknown type -- MAGNITUDE" z))))
+         (magnitude-polar 
+          (contents z)))
+        (else (error "Unknown type 
+               -- MAGNITUDE" z))))
 
 (define (angle z)
   (cond ((rectangular? z)
-         (angle-rectangular (contents z)))
+         (angle-rectangular 
+          (contents z)))
         ((polar? z)
-         (angle-polar (contents z)))
-        (else (error "Unknown type -- ANGLE" z))))
+         (angle-polar 
+          (contents z)))
+        (else (error "Unknown type 
+               -- ANGLE" z))))
 @end lisp
 
 To implement the complex-number arithmetic operations, we can use the same
@@ -11262,8 +11483,9 @@ procedure @t{add-complex} is still
 
 @lisp
 (define (add-complex z1 z2)
-  (make-from-real-imag (+ (real-part z1) (real-part z2))
-                       (+ (imag-part z1) (imag-part z2))))
+  (make-from-real-imag 
+   (+ (real-part z1) (real-part z2))
+   (+ (imag-part z1) (imag-part z2))))
 @end lisp
 
 Finally, we must choose whether to construct complex numbers using Ben's
@@ -11313,10 +11535,10 @@ interface.
 @end ifinfo
 @iftex
 @sp 0.6
-@center @image{fig/chap2/Fig2.21a,180mm,,,.pdf}
+@center @image{fig/chap2/Fig2.21a,139mm,,,.pdf}
 @sp 0.7
-@center @strong{Figure 2.21:} Structure of the generic complex-arithmetic system.
-@sp 0.0
+@strong{Figure 2.21:} Structure of the generic complex-arithmetic system.
+@sp 0.7
 @end iftex
 @end float
 
@@ -11410,11 +11632,11 @@ angle      | angle-polar     | angle-rectangular
 @end quotation
 @end ifinfo
 @iftex
-@sp 0.4
-@center @image{fig/chap2/Fig2.22,175mm,,,.pdf}
+@sp 0.1
+@center @image{fig/chap2/Fig2.22,139mm,,,.pdf}
 @sp 0.5
-@center @strong{Figure 2.22:} Table of operations for the complex-number system.
-@sp 0.7
+@strong{Figure 2.22:} Table of operations for the complex-number system.
+@sp 0.8
 @end iftex
 @end float
 
@@ -11450,7 +11672,8 @@ numbers.  This is accomplished by calling the following procedure:
   @r{;; internal procedures}
   (define (real-part z) (car z))
   (define (imag-part z) (cdr z))
-  (define (make-from-real-imag x y) (cons x y))
+  (define (make-from-real-imag x y) 
+    (cons x y))
   (define (magnitude z)
     (sqrt (+ (square (real-part z))
              (square (imag-part z)))))
@@ -11460,15 +11683,18 @@ numbers.  This is accomplished by calling the following procedure:
     (cons (* r (cos a)) (* r (sin a))))
 
   @r{;; interface to the rest of the system}
-  (define (tag x) (attach-tag 'rectangular x))
+  (define (tag x) 
+    (attach-tag 'rectangular x))
   (put 'real-part '(rectangular) real-part)
   (put 'imag-part '(rectangular) imag-part)
   (put 'magnitude '(rectangular) magnitude)
   (put 'angle '(rectangular) angle)
   (put 'make-from-real-imag 'rectangular
-       (lambda (x y) (tag (make-from-real-imag x y))))
+       (lambda (x y) 
+         (tag (make-from-real-imag x y))))
   (put 'make-from-mag-ang 'rectangular
-       (lambda (r a) (tag (make-from-mag-ang r a))))
+       (lambda (r a) 
+         (tag (make-from-mag-ang r a))))
   'done)
 @end lisp
 
@@ -11491,11 +11717,13 @@ Ben's internally defined constructors, except that they attach the tag.
 Alyssa's polar package is analogous:
 
 @lisp
+
 (define (install-polar-package)
   @r{;; internal procedures}
   (define (magnitude z) (car z))
   (define (angle z) (cdr z))
-  (define (make-from-mag-ang r a) (cons r a))
+  (define (make-from-mag-ang r a) 
+    (cons r a))
   (define (real-part z)
     (* (magnitude z) (cos (angle z))))
   (define (imag-part z)
@@ -11511,9 +11739,11 @@ Alyssa's polar package is analogous:
   (put 'magnitude '(polar) magnitude)
   (put 'angle '(polar) angle)
   (put 'make-from-real-imag 'polar
-       (lambda (x y) (tag (make-from-real-imag x y))))
+       (lambda (x y) 
+         (tag (make-from-real-imag x y))))
   (put 'make-from-mag-ang 'polar
-       (lambda (r a) (tag (make-from-mag-ang r a))))
+       (lambda (r a) 
+         (tag (make-from-mag-ang r a))))
   'done)
 @end lisp
 
@@ -11550,17 +11780,22 @@ returns 10.}
       (if proc
           (apply proc (map contents args))
           (error
-            "No method for these types -- APPLY-GENERIC"
+            "No method for these types 
+             -- APPLY-GENERIC"
             (list op type-tags))))))
 @end lisp
 
 Using @t{apply-generic}, we can define our generic selectors as follows:
 
 @lisp
-(define (real-part z) (apply-generic 'real-part z))
-(define (imag-part z) (apply-generic 'imag-part z))
-(define (magnitude z) (apply-generic 'magnitude z))
-(define (angle z) (apply-generic 'angle z))
+(define (real-part z) 
+  (apply-generic 'real-part z))
+(define (imag-part z) 
+  (apply-generic 'imag-part z))
+(define (magnitude z) 
+  (apply-generic 'magnitude z))
+(define (angle z) 
+  (apply-generic 'angle z))
 @end lisp
 
 Observe that these do not change at all if a new representation is added to the
@@ -11574,45 +11809,58 @@ numbers whenever we have magnitudes and angles:
 
 @lisp
 (define (make-from-real-imag x y)
-  ((get 'make-from-real-imag 'rectangular) x y))
+  ((get 'make-from-real-imag 
+        'rectangular) 
+   x y))
 
 (define (make-from-mag-ang r a)
-  ((get 'make-from-mag-ang 'polar) r a))
+  ((get 'make-from-mag-ang 
+        'polar) 
+   r a))
 @end lisp
 
 @quotation
 @strong{@anchor{Exercise 2.73}Exercise 2.73:} @ref{2.3.2} described a
 program that performs symbolic differentiation:
+@end quotation
 
-@smalllisp
+@lisp
 (define (deriv exp var)
   (cond ((number? exp) 0)
-        ((variable? exp) (if (same-variable? exp var) 1 0))
+        ((variable? exp) 
+         (if (same-variable? exp var) 1 0))
         ((sum? exp)
          (make-sum (deriv (addend exp) var)
                    (deriv (augend exp) var)))
         ((product? exp)
          (make-sum
-           (make-product (multiplier exp)
-                         (deriv (multiplicand exp) var))
-           (make-product (deriv (multiplier exp) var)
-                         (multiplicand exp))))
+           (make-product 
+            (multiplier exp)
+            (deriv (multiplicand exp) var))
+           (make-product 
+            (deriv (multiplier exp) var)
+            (multiplicand exp))))
         @math{\langle}@var{more rules can be added here}@math{\rangle}
         (else (error 
-                "unknown expression type -- DERIV" exp))))
-@end smalllisp
+                "unknown expression 
+                 type -- DERIV" exp))))
+@end lisp
 
+@quotation
 We can regard this program as performing a dispatch on the type of the
 expression to be differentiated.  In this situation the ``type tag'' of the
 datum is the algebraic operator symbol (such as @t{+}) and the operation
 being performed is @t{deriv}.  We can transform this program into
 data-directed style by rewriting the basic derivative procedure as
+@end quotation
 
 @lisp
 (define (deriv exp var)
    (cond ((number? exp) 0)
          ((variable? exp) 
-           (if (same-variable? exp var) 1 0))
+           (if (same-variable? exp var) 
+               1 
+               0))
          (else 
            ((get 'deriv (operator exp)) 
             (operands exp) 
@@ -11623,6 +11871,7 @@ data-directed style by rewriting the basic derivative procedure as
 (define (operands exp) (cdr exp))
 @end lisp
 
+@quotation
 @enumerate a
 
 @item
@@ -11644,7 +11893,8 @@ operator that binds it together.  Suppose, however, we indexed the procedures
 in the opposite way, so that the dispatch line in @t{deriv} looked like
 
 @lisp
-((get (operator exp) 'deriv) (operands exp) var)
+((get (operator exp) 'deriv) 
+ (operands exp) var)
 @end lisp
 
 @noindent
@@ -11730,7 +11980,8 @@ operation name and performs the operation indicated.  In such a discipline,
            (sqrt (+ (square x) (square y))))
           ((eq? op 'angle) (atan y x))
           (else
-           (error "Unknown op -- MAKE-FROM-REAL-IMAG" op))))
+           (error "Unknown op 
+            -- MAKE-FROM-REAL-IMAG" op))))
   dispatch)
 @end lisp
 
@@ -11835,11 +12086,11 @@ system.
 @end example
 @end ifinfo
 @iftex
-@sp 0.0
-@center @image{fig/chap2/Fig2.23a,186mm,,,.pdf}
+@sp 0.5
+@center @image{fig/chap2/Fig2.23a,139mm,,,.pdf}
 @sp 0.5
 @center @strong{Figure 2.23:} Generic arithmetic system.
-@sp 0.5
+@sp 0.0
 @end iftex
 @ifinfo
 @end quotation
@@ -11962,40 +12213,54 @@ as the internal operations, the same @t{add-complex}, @t{sub-complex},
 
 @lisp
 (define (install-complex-package)
-  @r{;; imported procedures from rectangular and polar packages}
+  @r{;; imported procedures from rectangular 
+    ;; and polar packages}
   (define (make-from-real-imag x y)
-    ((get 'make-from-real-imag 'rectangular) x y))
+    ((get 'make-from-real-imag 
+          'rectangular) 
+     x y))
   (define (make-from-mag-ang r a)
-    ((get 'make-from-mag-ang 'polar) r a))
+    ((get 'make-from-mag-ang 'polar) 
+     r a))
 
   @r{;; internal procedures}
   (define (add-complex z1 z2)
-    (make-from-real-imag (+ (real-part z1) (real-part z2))
-                         (+ (imag-part z1) (imag-part z2))))
+    (make-from-real-imag 
+     (+ (real-part z1) (real-part z2))
+     (+ (imag-part z1) (imag-part z2))))
   (define (sub-complex z1 z2)
-    (make-from-real-imag (- (real-part z1) (real-part z2))
-                         (- (imag-part z1) (imag-part z2))))
+    (make-from-real-imag 
+     (- (real-part z1) (real-part z2))
+     (- (imag-part z1) (imag-part z2))))
   (define (mul-complex z1 z2)
-    (make-from-mag-ang (* (magnitude z1) (magnitude z2))
-                       (+ (angle z1) (angle z2))))
+    (make-from-mag-ang 
+     (* (magnitude z1) (magnitude z2))
+     (+ (angle z1) (angle z2))))
   (define (div-complex z1 z2)
-    (make-from-mag-ang (/ (magnitude z1) (magnitude z2))
-                       (- (angle z1) (angle z2))))
+    (make-from-mag-ang 
+     (/ (magnitude z1) (magnitude z2))
+     (- (angle z1) (angle z2))))
 
   @r{;; interface to rest of the system}
   (define (tag z) (attach-tag 'complex z))
   (put 'add '(complex complex)
-       (lambda (z1 z2) (tag (add-complex z1 z2))))
+       (lambda (z1 z2) 
+         (tag (add-complex z1 z2))))
   (put 'sub '(complex complex)
-       (lambda (z1 z2) (tag (sub-complex z1 z2))))
+       (lambda (z1 z2) 
+         (tag (sub-complex z1 z2))))
   (put 'mul '(complex complex)
-       (lambda (z1 z2) (tag (mul-complex z1 z2))))
+       (lambda (z1 z2) 
+         (tag (mul-complex z1 z2))))
   (put 'div '(complex complex)
-       (lambda (z1 z2) (tag (div-complex z1 z2))))
+       (lambda (z1 z2) 
+         (tag (div-complex z1 z2))))
   (put 'make-from-real-imag 'complex
-       (lambda (x y) (tag (make-from-real-imag x y))))
+       (lambda (x y) 
+         (tag (make-from-real-imag x y))))
   (put 'make-from-mag-ang 'complex
-       (lambda (r a) (tag (make-from-mag-ang r a))))
+       (lambda (r a) 
+         (tag (make-from-mag-ang r a))))
   'done)
 @end lisp
 
@@ -12042,16 +12307,16 @@ package is stripped off (by applying @t{contents}) and the next level of tag
 @end example
 @end ifinfo
 @iftex
-@sp 0.2
+@sp 0.5
 @center @image{fig/chap2/Fig2.24c,108mm,,,.pdf}
 @sp 0.6
-@center @strong{Figure 2.24:} Representation of @math{3 + 4i} in rectangular form.
-@sp 0.8
+@strong{Figure 2.24:} Representation of @math{3 + 4i} in rectangular form.
+@sp 0.7
 @end iftex
 @end quotation
 @end float
 
-In the above packages, we used @t{add-rat}, @t{add-complex}, and the
+In the above packages, we used @t{add-rat}, @t{add-@/complex}, and the
 other arithmetic procedures exactly as originally written.  Once these
 definitions are internal to different installation procedures, however, they no
 longer need names that are distinct from each other: we could simply name them
@@ -12143,7 +12408,9 @@ to supply an almost identical procedure to handle the types
                        (imag-part z)))
 
 (put 'add '(complex scheme-number)
-     (lambda (z x) (tag (add-complex-to-schemenum z x))))
+     (lambda (z x) 
+       (tag 
+        (add-complex-to-schemenum z x))))
 @end lisp
 
 This technique works, but it is cumbersome.  With such a system, the cost of
@@ -12184,7 +12451,8 @@ to a complex number with that real part and zero imaginary part:
 
 @lisp
 (define (scheme-number->complex n)
-  (make-complex-from-real-imag (contents n) 0))
+  (make-complex-from-real-imag 
+   (contents n) 0))
 @end lisp
 
 We install these coercion procedures in a special coercion table, indexed under
@@ -12192,7 +12460,8 @@ the names of the two types:
 
 @lisp
 (put-coercion 
-  'scheme-number 'complex scheme-number->complex)
+ 'scheme-number 
+ 'complex scheme-number->complex)
 @end lisp
 
 (We assume that there are @t{put-coercion} and @t{get-coercion}
@@ -12229,17 +12498,28 @@ procedure:
                     (type2 (cadr type-tags))
                     (a1 (car args))
                     (a2 (cadr args)))
-                (let ((t1->t2 (get-coercion type1 type2))
-                      (t2->t1 (get-coercion type2 type1)))
+                (let ((t1->t2 
+                       (get-coercion type1
+                                     type2))
+                      (t2->t1 
+                       (get-coercion type2 
+                                     type1)))
                   (cond (t1->t2
-                         (apply-generic op (t1->t2 a1) a2))
+                         (apply-generic 
+                          op (t1->t2 a1) a2))
                         (t2->t1
-                         (apply-generic op a1 (t2->t1 a2)))
+                         (apply-generic 
+                          op a1 (t2->t1 a2)))
                         (else
-                         (error "No method for these types"
-                                (list op type-tags))))))
-              (error "No method for these types"
-                     (list op type-tags)))))))
+                         (error 
+                          "No method 
+                          for these types"
+                          (list 
+                           op 
+                           type-tags))))))
+              (error 
+               "No method for these types"
+               (list op type-tags)))))))
 @end lisp
 
 This coercion scheme has many advantages over the method of defining explicit
@@ -12391,9 +12671,9 @@ addressed in terms of computer-language design alone, without also drawing on
 work in knowledge representation and automated reasoning.}
 
 @float
-@quotation
 @anchor{Figure 2.26}
 @ifinfo
+@quotation
 @strong{Figure 2.26:} Relations among types of geometric figures.
 
 @example
@@ -12415,15 +12695,17 @@ triangle      right          |       \    |
                                  \  /
                                 square
 @end example
+@end quotation
 @end ifinfo
 @iftex
 @sp 0.1
-@center @image{fig/chap2/Fig2.26e,164mm,,,.pdf}
+@center @image{fig/chap2/Fig2.26e,139mm,,,.pdf}
 @sp 0.6
-@center @strong{Figure 2.26:} Relations among types of geometric figures.
+@quotation
+@strong{Figure 2.26:} Relations among types of geometric figures.
+@end quotation
 @sp 0.8
 @end iftex
-@end quotation
 @end float
 
 @quotation
@@ -12435,11 +12717,17 @@ their own type.  For example, in addition to the
 @t{scheme-number->complex} coercion shown above, he would do:
 
 @lisp
-(define (scheme-number->scheme-number n) n)
+(define 
+  (scheme-number->scheme-number n) n)
 (define (complex->complex z) z)
-(put-coercion 'scheme-number 'scheme-number
-              scheme-number->scheme-number)
-(put-coercion 'complex 'complex complex->complex)
+(put-coercion 
+ 'scheme-number 
+ 'scheme-number
+ scheme-number->scheme-number)
+(put-coercion 
+ 'complex 
+ 'complex 
+ complex->complex)
 @end lisp
 
 @enumerate a
@@ -12452,7 +12740,8 @@ the table for those types?  For example, assume that we've defined a generic
 exponentiation operation:
 
 @lisp
-(define (exp x y) (apply-generic 'exp x y))
+(define (exp x y) 
+  (apply-generic 'exp x y))
 @end lisp
 
 @noindent
@@ -12461,8 +12750,11 @@ package but not in any other package:
 
 @lisp
 @r{;; following added to Scheme-number package}
-(put 'exp '(scheme-number scheme-number)
-     (lambda (x y) (tag (expt x y)))) @r{; using primitive @t{expt}}
+(put 'exp 
+     '(scheme-number scheme-number)
+     (lambda (x y) 
+       (tag (expt x y)))) 
+       @r{; using primitive @t{expt}}
 @end lisp
 
 @noindent
@@ -12615,7 +12907,7 @@ is a simple polynomial in @math{x}, and
 
 @end ifinfo
 @tex
-$$ (y^2 + 1)x^3 + (2y)x + 1 $$
+$$ (y^2 + 1)x^3 + (2y\!)x + 1 $$
 @end tex
 @noindent
 is a polynomial in @math{x} whose coefficients are polynomials in @math{y}.
@@ -12657,19 +12949,25 @@ multiplication of polys:
 
 @lisp
 (define (add-poly p1 p2)
-  (if (same-variable? (variable p1) (variable p2))
-      (make-poly (variable p1)
-                 (add-terms (term-list p1)
-                            (term-list p2)))
-      (error "Polys not in same var -- ADD-POLY"
+  (if (same-variable? (variable p1) 
+                      (variable p2))
+      (make-poly 
+       (variable p1)
+       (add-terms (term-list p1)
+                  (term-list p2)))
+      (error "Polys not in same var 
+              -- ADD-POLY"
              (list p1 p2))))
 
 (define (mul-poly p1 p2)
-  (if (same-variable? (variable p1) (variable p2))
-      (make-poly (variable p1)
-                 (mul-terms (term-list p1)
-                            (term-list p2)))
-      (error "Polys not in same var -- MUL-POLY"
+  (if (same-variable? (variable p1) 
+                      (variable p2))
+      (make-poly 
+       (variable p1)
+       (mul-terms (term-list p1)
+                  (term-list p2)))
+      (error "Polys not in same var 
+              -- MUL-POLY"
              (list p1 p2))))
 @end lisp
 
@@ -12691,7 +12989,8 @@ similar to the ones in @ref{2.5.1}:
    and @t{variable?} from section 2.3.2}@math{\rangle}
 
   @r{;; representation of terms and term lists}
-  @math{\langle}@emph{procedures @t{adjoin-term} @dots{} @t{coeff} from text below}@math{\rangle}
+  @math{\langle}@emph{procedures @t{adjoin-term} @dots{} @t{coeff} 
+  from text below}@math{\rangle}
 
 @c  @r{;; continued on next page}
 @c
@@ -12701,13 +13000,17 @@ similar to the ones in @ref{2.5.1}:
   @math{\langle}@emph{procedures used by @t{mul-poly}}@math{\rangle}
 
   @r{;; interface to rest of the system}
-  (define (tag p) (attach-tag 'polynomial p))
+  (define (tag p) 
+    (attach-tag 'polynomial p))
   (put 'add '(polynomial polynomial)
-       (lambda (p1 p2) (tag (add-poly p1 p2))))
+       (lambda (p1 p2) 
+         (tag (add-poly p1 p2))))
   (put 'mul '(polynomial polynomial)
-       (lambda (p1 p2) (tag (mul-poly p1 p2))))
+       (lambda (p1 p2) 
+         (tag (mul-poly p1 p2))))
   (put 'make 'polynomial
-       (lambda (var terms) (tag (make-poly var terms))))
+       (lambda (var terms) 
+         (tag (make-poly var terms))))
   'done)
 @end lisp
 
@@ -12743,19 +13046,29 @@ for a sum is almost identical to @t{union-set}.}
   (cond ((empty-termlist? L1) L2)
         ((empty-termlist? L2) L1)
         (else
-         (let ((t1 (first-term L1)) (t2 (first-term L2)))
+         (let ((t1 (first-term L1)) 
+               (t2 (first-term L2)))
            (cond ((> (order t1) (order t2))
                   (adjoin-term
-                   t1 (add-terms (rest-terms L1) L2)))
+                   t1 
+                   (add-terms 
+                    (rest-terms L1) 
+                    L2)))
                  ((< (order t1) (order t2))
                   (adjoin-term
-                   t2 (add-terms L1 (rest-terms L2))))
+                   t2 
+                   (add-terms 
+                    L1 
+                    (rest-terms L2))))
                  (else
                   (adjoin-term
-                   (make-term (order t1)
-                              (add (coeff t1) (coeff t2)))
-                   (add-terms (rest-terms L1)
-                              (rest-terms L2)))))))))
+                   (make-term 
+                    (order t1)
+                    (add (coeff t1) 
+                         (coeff t2)))
+                   (add-terms 
+                    (rest-terms L1)
+                    (rest-terms L2)))))))))
 @end lisp
 
 The most important point to note here is that we used the generic addition
@@ -12774,16 +13087,21 @@ factors:
 (define (mul-terms L1 L2)
   (if (empty-termlist? L1)
       (the-empty-termlist)
-      (add-terms (mul-term-by-all-terms (first-term L1) L2)
-                 (mul-terms (rest-terms L1) L2))))
+      (add-terms 
+       (mul-term-by-all-terms 
+        (first-term L1) L2)
+       (mul-terms (rest-terms L1) L2))))
 (define (mul-term-by-all-terms t1 L)
   (if (empty-termlist? L)
       (the-empty-termlist)
       (let ((t2 (first-term L)))
         (adjoin-term
-         (make-term (+ (order t1) (order t2))
-                    (mul (coeff t1) (coeff t2)))
-         (mul-term-by-all-terms t1 (rest-terms L))))))
+         (make-term 
+          (+ (order t1) (order t2))
+          (mul (coeff t1) (coeff t2)))
+         (mul-term-by-all-terms 
+          t1 
+          (rest-terms L))))))
 @end lisp
 
 This is really all there is to polynomial addition and multiplication.  Notice
@@ -12921,11 +13239,15 @@ guarantee, we could have implemented @t{adjoin-term} to be similar to the
       (cons term term-list)))
 
 (define (the-empty-termlist) '())
-(define (first-term term-list) (car term-list))
-(define (rest-terms term-list) (cdr term-list))
-(define (empty-termlist? term-list) (null? term-list))
+(define (first-term term-list) 
+  (car term-list))
+(define (rest-terms term-list) 
+  (cdr term-list))
+(define (empty-termlist? term-list) 
+  (null? term-list))
 
-(define (make-term order coeff) (list order coeff))
+(define (make-term order coeff) 
+  (list order coeff))
 (define (order term) (car term))
 (define (coeff term) (cadr term))
 @end lisp
@@ -13014,18 +13336,20 @@ arguments and returns a list of the quotient and remainder polys.
 @smalllisp
 (define (div-terms L1 L2)
   (if (empty-termlist? L1)
-      (list (the-empty-termlist) (the-empty-termlist))
+      (list (the-empty-termlist) 
+            (the-empty-termlist))
       (let ((t1 (first-term L1))
             (t2 (first-term L2)))
         (if (> (order t2) (order t1))
             (list (the-empty-termlist) L1)
-            (let ((new-c (div (coeff t1) (coeff t2)))
-                  (new-o (- (order t1) (order t2))))
+            (let ((new-c (div (coeff t1) 
+                              (coeff t2)))
+                  (new-o (- (order t1) 
+                            (order t2))))
               (let ((rest-of-result
-                     @math{\langle}@var{compute rest of result recursively}@math{\rangle}
-                     ))
-                @math{\langle}@var{form complete result}@math{\rangle}
-                ))))))
+                     @math{\langle}@var{compute rest of result 
+                     recursively}@math{\rangle} ))
+                @math{\langle}@var{form complete result}@math{\rangle} ))))))
 @end smalllisp
 @end quotation
 
@@ -13121,9 +13445,12 @@ not attempt to reduce fractions to lowest terms.  Test your system by calling
 @t{make-rational} on two polynomials to produce a rational function
 
 @lisp
-(define p1 (make-polynomial 'x '((2 1)(0 1))))
-(define p2 (make-polynomial 'x '((3 1)(0 1))))
-(define rf (make-rational p2 p1))
+(define p1 
+  (make-polynomial 'x '((2 1)(0 1))))
+(define p2 
+  (make-polynomial 'x '((3 1)(0 1))))
+(define rf 
+  (make-rational p2 p1))
 @end lisp
 
 Now add @t{rf} to itself, using @t{add}. You will observe that this
@@ -13165,7 +13492,8 @@ operation that works on term lists:
 (define (gcd-terms a b)
   (if (empty-termlist? b)
       a
-      (gcd-terms b (remainder-terms a b))))
+      (gcd-terms b 
+                 (remainder-terms a b))))
 @end lisp
 
 @noindent
@@ -13183,9 +13511,14 @@ polys are not in the same variable.)  Install in the system a generic operation
 and to ordinary @t{gcd} for ordinary numbers.  As a test, try
 
 @lisp
-(define p1 (make-polynomial 
-             'x '((4 1) (3 -1) (2 -2) (1 2))))
-(define p2 (make-polynomial 'x '((3 1) (1 -1))))
+(define p1 
+  (make-polynomial 
+   'x 
+   '((4 1) (3 -1) (2 -2) (1 2))))
+(define p2 
+  (make-polynomial 
+   'x 
+   '((3 1) (1 -1))))
 (greatest-common-divisor p1 p2)
 @end lisp
 
@@ -13255,7 +13588,7 @@ of the division is called the @newterm{pseudoremainder}.
 @enumerate a
 
 @item
-Implement the procedure @t{pseudoremainder-terms}, which is just like
+Implement the procedure @t{pseudoremainder-@/terms}, which is just like
 @t{remainder-terms} except that it multiplies the dividend by the
 integerizing factor described above before calling @t{div-terms}.  Modify
 @t{gcd-@/terms} to use @t{pseudoremainder-terms}, and verify that
@@ -13334,10 +13667,22 @@ expressions in either integers or polynomials.  To test your program, try the
 example at the beginning of this extended exercise:
 
 @lisp
-(define p1 (make-polynomial 'x '((1 1) (0 1))))
-(define p2 (make-polynomial 'x '((3 1) (0 -1))))
-(define p3 (make-polynomial 'x '((1 1))))
-(define p4 (make-polynomial 'x '((2 1) (0 -1))))
+(define p1 
+  (make-polynomial 
+   'x 
+   '((1 1) (0 1))))
+(define p2 
+  (make-polynomial 
+   'x 
+   '((3 1) (0 -1))))
+(define p3 
+  (make-polynomial 
+   'x 
+   '((1 1))))
+(define p4 
+  (make-polynomial 
+   'x 
+   '((2 1) (0 -1))))
 
 (define rf1 (make-rational p1 p2))
 (define rf2 (make-rational p3 p4))
@@ -13373,7 +13718,7 @@ compute polynomial @acronym{GCD}s.}
 @end ifinfo
 @tex
 $ {M\!\epsilon\!\tau\!\alpha\!\beta\!\acute{\alpha}\!\lambda\!\lambda\! o\!\nu\ 
-\grave{\alpha}\!\nu\!\alpha\!\pi\!\alpha\!\acute{\upsilon}\!\epsilon\!\tau\!\alpha\iota} $
+\grave{\alpha}\nu\!\alpha\!\pi\!\alpha\!\acute{\upsilon}\!\epsilon\!\tau\!\alpha\iota} $
 @end tex
 
 (Even while it changes, it stands still.)
@@ -13386,6 +13731,8 @@ Plus @,{c}a change, plus c'est la m@^{e}me chose.
 
 ---Alphonse Karr
 @end quotation
+
+@sp 0.8
 
 @noindent
 The preceding chapters introduced the basic elements from which programs are
@@ -21730,6 +22077,8 @@ to the treasure @emph{is} the treasure!
 ---John Barth, @cite{Chimera}
 @end quotation
 
+@sp 0.8
+
 @noindent
 In our study of program design, we have seen that expert programmers control
 the complexity of their designs with the same general techniques used by
@@ -21780,7 +22129,7 @@ representation of programs as sequences of primitive instructions.  These
 languages have means of combination and abstraction, such as procedure
 definition, that are appropriate to the larger-scale organization of systems.
 
-@newterm{Metalinguistic abstraction}---establishing new languages---plays an
+@newterm{Metalinguistic abstraction}---establishing new langu@-ages---plays an
 important role in all branches of engineering design.  It is particularly
 important to computer programming, because in programming not only can we
 formulate new languages but we can also implement these languages by
@@ -29092,8 +29441,10 @@ attributes the maker's glory to the work), insofar as nearly all the manifold
 motions are caused by a most simple and material force, just as all motions of
 the clock are caused by a single weight.
 
----Johannes Kepler (letter to Herwart von Hohenburg, 1605)
+---Johannes Kepler @* (letter to Herwart von Hohenburg, 1605)
 @end quotation
+
+@sp 0.8
 
 @noindent
 We began this book by studying processes and by describing processes in terms
@@ -36164,7 +36515,7 @@ Kluwer Academic Publishers.
 Any inaccuracies in this index may be explained by the fact 
 that it has been prepared with the help of a computer. 
 
----Donald E. Knuth, @cite{Fundamental Algorithms}@* 
+---Donald E. Knuth, @* @cite{Fundamental Algorithms}@* 
 (Volume 1 of @cite{The Art of Computer Programming}) 
 @end quotation
 
