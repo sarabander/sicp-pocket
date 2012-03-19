@@ -1,5 +1,5 @@
 \input texinfo
-@input charter
+@input utopia
 @kindle
 @comment
 @comment             **********************************************************
@@ -7,8 +7,8 @@
 @settitle            Structure and Interpretation of Computer Programs, 2e
 @comment             Unofficial Texinfo Format
 @comment
-@set utfversion      2.araba1p-a2 
-@set utfversiondate  March 17, 2012
+@set utfversion      2.araba1p-a2.1 
+@set utfversiondate  March 19, 2012
 @comment
 @comment             This file is licensed under a Creative Commons 
 @comment             Attribution-ShareAlike 3.0 Unported License 
@@ -76,18 +76,24 @@
 @setshortcontentsaftertitlepage
 
 @titlepage
-@titlefont{Structure and}
-@sp 0.5
-@titlefont{Interpretation of}
-@sp 0.3
-@title Computer Programs
+@c @titlefont{Structure and}
+@c @sp 0.5
+@c @titlefont{Interpretation of}
+@c @sp 0.3
+@c @title Computer Programs
+@c @sp 0.2
+
+@titlefont{Structure and Interpretation}
+@sp 0.4
+@title @i{of} Computer Programs
 @sp 0.2
+
 @subtitle Second Edition
 @subtitle Unofficial Texinfo Format @value{utfversion}
 @author Harold Abelson and Gerald Jay Sussman
-@sp 0.2
+@sp 0.4
 @author with Julie Sussman
-@sp 0.5
+@sp 0.4
 @author foreword by Alan J. Perlis
 @sp 0.4
 
@@ -127,7 +133,8 @@ London, England
 @sp 0.5
 @noindent
 McGraw-Hill Book Company@*
-New York, St. Louis, San Francisco, Montreal, Toronto
+New York, St. Louis, San Francisco,@*
+Montreal, Toronto
 
 @c @sp 0.5
 @c @noindent
@@ -139,8 +146,7 @@ New York, St. Louis, San Francisco, Montreal, Toronto
 @sp 0.5
 @noindent
 Unofficial Texinfo Format @value{utfversion} (@value{utfversiondate}),
-based on 2.gavrie1 (November 21, 2011) and 
-@url{http://www.neilvandyke.org/sicp-texi/, 2.neilvandyke4} (January 10, 2007).
+based on @url{http://www.neilvandyke.org/sicp-texi/, 2.neilvandyke4} (January 10, 2007).
 
 @end titlepage
 @everyheading @| @| 
@@ -461,10 +467,7 @@ symbols and formulas are properly typeset, and figures drawn in
 vector graphics. The original text formulas and @acronym{ASCII} art figures 
 are still there in the Texinfo source, but will display only when compiled 
 to Info output. At the dawn of e-book readers and tablets, reading a 
-@acronym{PDF} on screen is officially not silly anymore. 
-
-@noindent
-Enjoy!
+@acronym{PDF} on screen is officially not silly anymore. Enjoy!
 
 @sp 0.5
 @noindent
@@ -1290,7 +1293,6 @@ value 2 by name:
 @lisp
 size
 @i{2}
-
 (* 5 size)
 @i{10}
 @end lisp
@@ -1299,14 +1301,10 @@ Here are further examples of the use of @t{define}:
 
 @lisp
 (define pi 3.14159)
-
 (define radius 10)
-
 (* pi (* radius radius))
 @i{314.159}
-
 (define circumference (* 2 pi radius))
-
 circumference
 @i{62.8318}
 @end lisp
@@ -1967,33 +1965,21 @@ presented.
 
 @lisp
 10
-
 (+ 5 3 4)
-
 (- 9 1)
-
 (/ 6 2)
-
 (+ (* 2 4) (- 4 6))
-
 (define a 3)
-
 (define b (+ a 1))
-
 (+ a b (* a b))
-
 (= a b)
-
 (if (and (> b a) (< b (* a b)))
     b
     a)
-
 (cond ((= a 4) 6)
       ((= b 4) (+ 6 7 a))
       (else 25))
-
 (+ 2 (if (> b a) b a))
-
 (* (cond ((> a b) a)
          ((< a b) b)
          (else -1))
@@ -2647,9 +2633,9 @@ We can use the substitution model of @ref{1.1.5} to watch this
 procedure in action computing 6!, as shown in @ref{Figure 1.3}.
 
 @float
-@quotation
 @anchor{Figure 1.3}
 @ifinfo
+@quotation
 @strong{Figure 1.3:} A linear recursive process for computing 6!.
 
 @example
@@ -2666,15 +2652,15 @@ procedure in action computing 6!, as shown in @ref{Figure 1.3}.
 (* 6 120)                           /
 720          <---------------------
 @end example
+@end quotation
 @end ifinfo
 @iftex
 @sp 0.7
-@center @image{fig/chap1/Fig1.3c,,79mm,,.pdf}
+@center @image{fig/chap1/Fig1.3c,139mm,,,.pdf}
 @sp 0.7
 @center @strong{Figure 1.3:} A linear recursive process for computing 6!.
 @sp 1
 @end iftex
-@end quotation
 @end float
 
 Now let's take a different perspective on computing factorials.  We could
@@ -2713,12 +2699,8 @@ We avoided doing this here so as to minimize the number of things to think
 about at once.}
 
 @lisp
-(define (factorial n)
-  (fact-iter 1 1 n))
-
-(define (fact-iter product 
-                   counter 
-                   max-count)
+(define (factorial n) (fact-iter 1 1 n))
+(define (fact-iter product counter max-count)
   (if (> counter max-count)
       product
       (fact-iter (* counter product)
@@ -2730,9 +2712,9 @@ As before, we can use the substitution model to visualize the process of
 computing 6!, as shown in @ref{Figure 1.4}.
 
 @float
-@quotation
 @anchor{Figure 1.4}
 @ifinfo
+@quotation
 @strong{Figure 1.4:} A linear iterative process for computing 6!.
 
 @example
@@ -2746,6 +2728,7 @@ computing 6!, as shown in @ref{Figure 1.4}.
 (fact-iter 720 7 6)  V
 720
 @end example
+@end quotation
 @end ifinfo
 @iftex
 @sp 0.3
@@ -2754,7 +2737,6 @@ computing 6!, as shown in @ref{Figure 1.4}.
 @center @strong{Figure 1.4:} A linear iterative process for computing 6!.
 @sp 0.2
 @end iftex
-@end quotation
 @end float
 
 Compare the two processes.  From one point of view, they seem hardly different
@@ -2933,13 +2915,6 @@ computing Fibonacci numbers:
                  (fib (- n 2))))))
 @end lisp
 
-Consider the pattern of this computation.  To compute @t{(fib 5)}, we
-compute @t{(fib 4)} and @t{(fib 3)}.  To compute @t{(fib 4)}, we
-compute @t{(fib 3)} and @t{(fib 2)}.  In general, the evolved process
-looks like a tree, as shown in @ref{Figure 1.5}.  Notice that the branches
-split into two at each level (except at the bottom); this reflects the fact
-that the @t{fib} procedure calls itself twice each time it is invoked.
-
 @float
 @quotation
 @anchor{Figure 1.5}
@@ -2969,14 +2944,21 @@ V     /  . \   . 1  .  . 1  .  . 0  .  . 1  .  . 0  ..
 @end example
 @end ifinfo
 @iftex
-@sp 0.7
-@center @image{fig/chap1/Fig1.5c,128mm,,,.pdf}
+@sp 0.5
+@center @image{fig/chap1/Fig1.5c,125mm,,,.pdf}
 @sp 0.5
 @strong{Figure 1.5:} The tree-recursive process generated in computing @t{(fib 5)}.
-@sp 0.6
+@sp 0.0
 @end iftex
 @end quotation
 @end float
+
+Consider the pattern of this computation.  To compute @t{(fib 5)}, we
+compute @t{(fib 4)} and @t{(fib 3)}.  To compute @t{(fib 4)}, we
+compute @t{(fib 3)} and @t{(fib 2)}.  In general, the evolved process
+looks like a tree, as shown in @ref{Figure 1.5}.  Notice that the branches
+split into two at each level (except at the bottom); this reflects the fact
+that the @t{fib} procedure calls itself twice each time it is invoked.
 
 This procedure is instructive as a prototypical tree recursion, but it is a
 terrible way to compute Fibonacci numbers because it does so much redundant
@@ -3128,10 +3110,8 @@ We can easily translate this description into a recursive procedure:
 @lisp
 (define (count-change amount)
   (cc amount 5))
-
 (define (cc amount kinds-of-coins)
-  (cond ((= amount 0) 
-         1)
+  (cond ((= amount 0) 1)
         ((or (< amount 0) 
              (= kinds-of-coins 0)) 
          0)
@@ -3192,14 +3172,12 @@ computes @math{f} by means of an iterative process.
 is called @newterm{Pascal's triangle}.
 
 @example
-
         1
       1   1
     1   2   1
   1   3   3   1
 1   4   6   4   1
 @end example
-@sp 0.3
 
 The numbers at the edge of the triangle are all 1, and each number inside the
 triangle is the sum of the two numbers above it.@footnote{The elements of
@@ -3599,7 +3577,8 @@ example,
 GCD(206,40) = GCD(40,6)
             = GCD(6,4)
             = GCD(4,2)
-            = GCD(2,0) = 2
+            = GCD(2,0) 
+            = 2
 @end example
 
 @noindent
@@ -4266,10 +4245,10 @@ formula
 @end ifinfo
 @tex
 $$\eqalign{ 
-  {\int_a^b \!f} &= \left[f\!\left(a + {d\!x\over 2}\right) 
+  {\int_a^b \!f} &= \left[\,f\!\left(a + {d\!x\over 2}\right) 
                   + f\!\left(a + d\!x + {d\!x\over 2}\right) \right. \cr
                  &+ \left. f\!\left(a + 2d\!x + {d\!x\over 2}\right) 
-                  + \dots \right] d\!x \cr } $$
+                  + \dots \,\right] d\!x \cr } $$
 @end tex
 @noindent
 for small values of @math{d\!x}.  We can express this directly as a procedure:
@@ -4307,7 +4286,7 @@ h
 $$ {h\over 3}(y_0 + 4y_1 + 2y_2 + 4y_3 + 2y_4 + \dots + 2y_{n-2} + 4y_{n-1} + y_n) $$
 @end tex
 @noindent
-where @math{h = (b - a) \big/ n}, for some even integer @math{n}, and
+where @math{h = (b - a) \big/\!n}, for some even integer @math{n}, and
 @math{y_k = f(a + kh)}.  (Increasing @math{n} increases the
 accuracy of the approximation.)  Define a procedure that takes as arguments
 @math{f}, @math{a}, @math{b}, and @math{n} and returns the value of the integral, computed
@@ -4323,7 +4302,6 @@ is performed iteratively.  Show how to do this by filling in the missing
 expressions in the following definition:
 
 @lisp
-
 (define (sum term a next b)
   (define (iter a result)
     (if @math{\langle}@var{??}@math{\rangle}
@@ -4801,6 +4779,7 @@ error.@footnote{This can be accomplished using @t{error}, which takes as
 arguments a number of items that are printed as error messages.}
 
 @lisp
+
 (define (half-interval-method f a b)
   (let ((a-value (f a))
         (b-value (f b)))
@@ -5197,8 +5176,7 @@ Thus, we can express the idea of derivative (taking @math{d\!x} to be, say,
 @lisp
 (define (deriv g)
   (lambda (x)
-    (/ (- (g (+ x dx)) (g x))
-       dx)))
+    (/ (- (g (+ x dx)) (g x)) dx)))
 @end lisp
 
 @noindent
@@ -5730,10 +5708,13 @@ $$ \eqalign{
 {n_1 \over d_1} - {n_2 \over d_2} 	&= {n_1 d_2 - n_2 d_1 \over d_1 d_2} \cr
 {n_1 \over d_1} \times {n_2 \over d_2} 	&= {n_1 n_2 \over d_1 d_2} \cr
 {n_1 \big/ d_1} \over {n_2 \big/ d_2} 	&= {n_1 d_2 \over d_1 n_2} \cr
-{n_1 \over d_1} 			&= {n_2 \over d_2} \quad 
-						{\rm\ if\ and\ only\ if\quad} 
-						n_1 d_2 = n_2 d_1 \cr
 } $$
+
+$$
+{n_1 \over d_1} 			= {n_2 \over d_2} \quad 
+						{\rm\ if\ and\ only\ if\quad} 
+						n_1 d_2 = n_2 d_1 
+$$
 @end tex
 @noindent
 We can express these rules as procedures:
@@ -6641,33 +6622,6 @@ nested @t{cons} operations:
                   (cons 4 nil))))
 @end lisp
 
-@float
-@quotation
-@anchor{Figure 2.4}
-@ifinfo
-@strong{Figure 2.4:} The sequence 1, 2, 3, 4 represented as a chain of pairs.
-
-@example
-     +---+---+     +---+---+     +---+---+     +---+---+
----->| * | *-+---->| * | *-+---->| * | *-+---->| * | / |
-     +-|-+---+     +-|-+---+     +-|-+---+     +-|-+---+
-       |             |             |             |
-       V             V             V             V
-     +---+         +---+         +---+         +---+
-     | 1 |         | 2 |         | 3 |         | 4 |
-     +---+         +---+         +---+         +---+
-@end example
-@end ifinfo
-@iftex
-@sp 0.1
-@center @image{fig/chap2/Fig2.4c,75mm,,,.pdf}
-@sp 0.3
-@strong{Figure 2.4:} The sequence 1, 2, 3, 4 represented as a chain of pairs.
-@sp 0.5
-@end iftex
-@end quotation
-@end float
-
 Such a sequence of pairs, formed by nested @t{cons}es, is called a
 @newterm{list}, and Scheme provides a primitive called @t{list} to help in
 constructing lists.@footnote{In this book, we use @newterm{list} to mean a
@@ -6701,6 +6655,33 @@ as @t{(1 2 3 4)}:
 one-through-four
 @i{(1 2 3 4)}
 @end lisp
+
+@float
+@quotation
+@anchor{Figure 2.4}
+@ifinfo
+@strong{Figure 2.4:} The sequence 1, 2, 3, 4 represented as a chain of pairs.
+
+@example
+     +---+---+     +---+---+     +---+---+     +---+---+
+---->| * | *-+---->| * | *-+---->| * | *-+---->| * | / |
+     +-|-+---+     +-|-+---+     +-|-+---+     +-|-+---+
+       |             |             |             |
+       V             V             V             V
+     +---+         +---+         +---+         +---+
+     | 1 |         | 2 |         | 3 |         | 4 |
+     +---+         +---+         +---+         +---+
+@end example
+@end ifinfo
+@iftex
+@sp 0.3
+@center @image{fig/chap2/Fig2.4c,75mm,,,.pdf}
+@sp 0.3
+@strong{Figure 2.4:} The sequence 1, 2, 3, 4 represented as a chain of pairs.
+@sp 0.7
+@end iftex
+@end quotation
+@end float
 
 Be careful not to confuse the expression @t{(list 1 2 3 4)} with the list
 @t{(1 2 3 4)}, which is the result obtained when the expression is
@@ -7001,7 +6982,7 @@ write
 @end lisp
 }
 
-Use this notation to write a procedure @t{same-parity} that takes one or
+Use this notation to write a procedure @t{same-@/parity} that takes one or
 more integers and returns a list of all the arguments that have the same
 even-odd parity as the first argument.  For example,
 
@@ -7021,7 +7002,6 @@ in a list and generate the list of results.  For instance, the following
 procedure scales each number in a list by a given factor:
 
 @lisp
-
 (define (scale-list items factor)
   (if (null? items)
       nil
@@ -7700,10 +7680,10 @@ the commonality between the two programs.
 @end quotation
 @end ifinfo
 @iftex
-@sp 0.4
+@sp 0.6
 @center @image{fig/chap2/Fig2.7d,139mm,,,.pdf} 
 @c 187mm
-@sp 0.4
+@sp 0.6
 @quotation
 @strong{Figure 2.7:} The signal-flow plans for the
 procedures @t{sum-@/odd-@/squares} (top) and @t{even-fibs} (bottom) reveal
@@ -8029,7 +8009,7 @@ would evaluate
 
 @quotation
 @strong{@anchor{Exercise 2.36}Exercise 2.36:} The procedure @t{accumulate-n}
-is similar to @t{accumu-@/late} except that it takes as its third argument a
+is similar to @t{accumulate} except that it takes as its third argument a
 sequence of sequences, which are all assumed to have the same number of
 elements.  It applies the designated accumulation procedure to combine all the
 first elements of the sequences, all the second elements of the sequences, and
@@ -8050,8 +8030,8 @@ of @t{accumulate-n}:
 
 @quotation
 @strong{@anchor{Exercise 2.37}Exercise 2.37:}
-Suppose we represent vectors @math{{\bf v} = (v_i)} as sequences of numbers, and
-matrices @math{{\bf m} = (m_{ij})} as sequences of vectors (the rows of the
+Suppose we represent vectors @w{@b{v} = @math{(v_i)}} as sequences of numbers, and
+matrices @w{@b{m} = @math{(m_{ij})}} as sequences of vectors (the rows of the
 matrix).  For example, the matrix
 @ifinfo
 
@@ -8401,7 +8381,7 @@ produce not only one solution, but all solutions to the puzzle.
 @center @image{fig/chap2/Fig2.8c,73mm,,,.pdf}
 @sp 0.7
 @center @strong{Figure 2.8:} A solution to the eight-queens puzzle.
-@sp 0.7
+@sp 0.0
 @end iftex
 @end float
 
@@ -8497,11 +8477,11 @@ build arbitrarily complicated patterns.
 @end ifinfo
 @end quotation
 @iftex
-@sp 0.1
-@image{fig/chap2/Fig2.9-bigger,139mm,,,.png}
-@sp 0.6
+@sp 0.0
+@image{fig/chap2/Fig2.9-bigger,139mm,60mm,,.png}
+@sp 0.3
 @center @strong{Figure 2.9:} Designs generated with the picture language.
-@sp 0.7
+@sp 0.3
 @end iftex
 @end float
 
@@ -8632,6 +8612,9 @@ example, @t{flip-vert} takes a painter and produces a painter that draws its
 image upside-down, and @t{flip-horiz} produces a painter that draws the
 original painter's image left-to-right reversed.
 
+@ref{Figure 2.12} shows the drawing of a painter called
+@t{wave4} that is built up in two stages starting from @t{wave}:
+
 @float
 @quotation
 @anchor{Figure 2.12}
@@ -8647,18 +8630,15 @@ from the @t{wave} painter of @ref{Figure 2.10}.
 @end lisp
 @end ifinfo
 @iftex
-@sp 0.5
+@sp 0.3
 @center @image{fig/chap2/Fig2.12,105mm,,,.pdf}
 @sp 0.5
 @strong{Figure 2.12:} Creating a complex figure, starting
 from the @t{wave} painter of @ref{Figure 2.10}.
-@sp 0.7
+@sp 0.0
 @end iftex
 @end quotation
 @end float
-
-@ref{Figure 2.12} shows the drawing of a painter called
-@t{wave4} that is built up in two stages starting from @t{wave}:
 
 @lisp
 (define wave2 (beside wave (flip-vert wave)))
@@ -8679,14 +8659,12 @@ Scheme procedures.  This means that we don't need a special abstraction
 mechanism in the picture language: Since the means of combination are ordinary
 Scheme procedures, we automatically have the capability to do anything with
 painter operations that we can do with procedures.  For example, we can
-abstract the pattern in @t{wave4} as
-
+abstract the pattern in @t{wave4} as @t{(define (flipped-pairs painter)}
 @lisp
-(define (flipped-pairs painter)
-  (let ((painter2 
-         (beside painter 
-                 (flip-vert painter))))
-    (below painter2 painter2)))
+       (let ((painter2 
+              (beside painter 
+                      (flip-vert painter))))
+         (below painter2 painter2)))
 @end lisp
 
 @noindent
@@ -8722,7 +8700,7 @@ and define @t{wave4} as an instance of this pattern:
 
 @end ifinfo
 @iftex
-@sp 0.0
+@sp 0.3
 @center @image{fig/chap2/Fig2.13a,125mm,,,.pdf}
 @sp 0.5
 @strong{Figure 2.13:} Recursive plans for @t{right-split} and @t{corner-split}.
@@ -8939,11 +8917,11 @@ vector    \    __--        edge1
 @end example
 @end ifinfo
 @iftex
-@sp 0.2
-@center @image{fig/chap2/Fig2.15a,80mm,,,.pdf}
-@sp 0.6
+@sp 0.3
+@center @image{fig/chap2/Fig2.15a,78mm,,,.pdf}
+@sp 0.4
 @strong{Figure 2.15:} A frame is described by three vectors --- an origin and two edges.
-@sp 0.1
+@sp 0.0
 @end iftex
 @end quotation
 @end float
@@ -9595,19 +9573,20 @@ d(uv)     / dv \     / du \
 
 @end ifinfo
 @tex
-%$$ \eqalign{
-%&{{\it dc} \over {\it dx}} 		= 0, 
-%	\quad {\rm for\ } c\ {\rm a\ constant\ or\ a\ variable\ different\ from\ } x \cr     
-%&{{\it dx} \over {\it dx}} 		= 1 \cr
-%&{{\it d(u + v)} \over {\it dx}} 	= {{\it du} \over {\it dx}} + {{\it dv} \over {\it dx}} \cr
-%&{{\it d(uv)} \over {\it dx}} 	= u {{\it dv} \over {\it dx}} + v {{\it du} \over {\it dx}} \cr
-%} $$
+$$ \eqalign{
+&{{\it dc} \over {\it dx}} 		= 0, 
+	\quad {\rm for\ } c\ {\rm a\ constant\ or\ a\ variable\ different\ from\ } x \cr} $$
+$$ \eqalign{
+&{{\it dx} \over {\it dx}} 		= 1 \cr
+&{{\it d\,(\!u + v)} \over {\it dx}} 	= {{\it du} \over {\it dx}} + {{\it dv} \over {\it dx}} \cr
+&{{\it d\,(\!uv)} \over {\it dx}} 	= u {{\it dv} \over {\it dx}} + v {{\it du} \over {\it dx}} \cr
+} $$
 %
-$$ {{\it dc} \over {\it dx}} 		= 0, 
-	\quad {\rm for\ } c\ {\rm a\ constant\ or\ a\ variable\ different\ from\ } x, $$      
-$$ {{\it dx} \over {\it dx}} 		= 1, $$
-$$ {{\it d(u + v)} \over {\it dx}} 	= {{\it du} \over {\it dx}} + {{\it dv} \over {\it dx}}, $$
-$$ {{\it d(uv)} \over {\it dx}} 	= u {{\it dv} \over {\it dx}} + v {{\it du} \over {\it dx}}. $$
+%$$ {{\it dc} \over {\it dx}} 		= 0, 
+%	\quad {\rm for\ } c\ {\rm a\ constant\ or\ a\ variable\ different\ from\ } x, $$      
+%$$ {{\it dx} \over {\it dx}} 		= 1, $$
+%$$ {{\it d\,(\!u + v)} \over {\it dx}} 	= {{\it du} \over {\it dx}} + {{\it dv} \over {\it dx}}, $$
+%$$ {{\it d\,(\!uv)} \over {\it dx}} 	= u {{\it dv} \over {\it dx}} + v {{\it du} \over {\it dx}}. $$
 @end tex
 Observe that the latter two rules are recursive in nature.  That is, to obtain
 the derivative of a sum we first find the derivatives of the terms and add
@@ -9733,9 +9712,8 @@ The augend is the third item of the sum list:
 
 @item
 A product is a list whose first element is the symbol @t{*}:
-
+@t{(define (product? x)}
 @lisp
-(define (product? x)
   (and (pair? x) (eq? (car x) '*)))
 @end lisp
 
@@ -9784,7 +9762,7 @@ d(xy)
 
 @end ifinfo
 @tex
-$$ {{\it d(xy)} \over {\it dx}} = x \cdot 0 + 1 \cdot y $$
+$$ {{\it d\,(\!xy)} \over {\it dx}} = x \cdot 0 + 1 \cdot y $$
 @end tex
 @noindent
 but we would like the program to know that @math{x \cdot 0 = 0}, @math{1 \cdot y = y},
@@ -9799,17 +9777,15 @@ selectors of the implementation.  We can adopt a similar strategy here.  We
 won't change @t{deriv} at all.  Instead, we will change @t{make-sum} so
 that if both summands are numbers, @t{make-sum} will add them and return
 their sum.  Also, if one of the summands is 0, then @t{make-sum} will return
-the other summand.
-
+the other summand: @t{(define (make-sum a1 a2)}
 @lisp
-(define (make-sum a1 a2)
-  (cond ((=number? a1 0) 
-         a2)
-        ((=number? a2 0) 
-         a1)
-        ((and (number? a1) (number? a2)) 
-         (+ a1 a2))
-        (else (list '+ a1 a2))))
+     (cond ((=number? a1 0) 
+            a2)
+           ((=number? a2 0) 
+            a1)
+           ((and (number? a1) (number? a2)) 
+            (+ a1 a2))
+           (else (list '+ a1 a2))))
 @end lisp
 
 This uses the procedure @t{=number?}, which checks whether an expression is
@@ -9870,12 +9846,12 @@ d(u^n)            du
 
 @end ifinfo
 @tex
-$$ {{\it d(u^n)} \over {\it dx}} = nu^{n-1} {{\it du} \over {\it dx}} $$
+$$ {{\it d\,(\!u^n)} \over {\it dx}} = nu^{n-1} {{\it du} \over {\it dx}} $$
 @end tex
 @noindent
 by adding a new clause to the @t{deriv} program and defining appropriate
 procedures @t{exponentiation?}, @t{base}, @t{exponent}, and
-@t{make-exponentiation}.  (You may use the symbol @t{**} to denote
+@t{make-@/exponentiation}.  (You may use the symbol @t{**} to denote
 exponentiation.)  Build in the rules that anything raised to the power 0 is 1
 and anything raised to the power 1 is the thing itself.
 @end quotation
@@ -10173,11 +10149,11 @@ elements in the right subtree be larger.
 @end example
 @end ifinfo
 @iftex
-@sp 0.3
-@center @image{fig/chap2/Fig2.16b,119mm,,,.pdf}
-@sp 0.3
+@sp 0.7
+@center @image{fig/chap2/Fig2.16b,125mm,,,.pdf}
+@sp 0.7
 @strong{Figure 2.16:} Various binary trees that represent the set @math{\{1, 3, 5, 7, 9, 11\}}.
-@sp 0.6
+@sp 0.7
 @end iftex
 @end quotation
 @end float
@@ -10308,11 +10284,11 @@ devoted to this problem.  See @ref{Cormen et al. 1990}.}
 @end example
 @end ifinfo
 @iftex
-@sp 0.1
-@center @image{fig/chap2/Fig2.17a,68mm,,,.pdf}
-@sp 0.4
+@sp 0.3
+@center @image{fig/chap2/Fig2.17a,63mm,,,.pdf}
+@sp 0.3
 @strong{Figure 2.17:} Unbalanced tree produced by adjoining 1 through 7 in sequence.
-@sp 0.8
+@sp 0.0
 @end iftex
 @end quotation
 @end float
@@ -10620,11 +10596,11 @@ left, right, left and reach C.  Thus, the entire message is BAC.
 @end example
 @end ifinfo
 @iftex
-@sp 1.0
-@center @image{fig/chap2/Fig2.18a,138mm,,,.pdf}
-@sp 1.0
+@sp 0.2
+@center @image{fig/chap2/Fig2.18a,123mm,,,.pdf}
+@sp 0.4
 @center @strong{Figure 2.18:} A Huffman encoding tree.
-@sp 1.0
+@sp 0.0
 @end iftex
 @c @end quotation
 @end float
@@ -10668,6 +10644,7 @@ Merge          @{(A 8) (B 3) (@{C D@} 2)
 Merge          @{(A 8) (@{B C D@} 5) 
                 (@{E F G H@} 4)@}
 Merge          @{(A 8) (@{B C D E F G H@} 9)@}
+
 Final merge    @{(@{A B C D E F G H@} 17)@}
 @end example
 
@@ -10720,14 +10697,12 @@ If we make a tree in this way, we have the following selectors:
 
 @lisp
 (define (left-branch tree) (car tree))
-
 (define (right-branch tree) (cadr tree))
 
 (define (symbols tree)
   (if (leaf? tree)
       (list (symbol-leaf tree))
       (caddr tree)))
-
 (define (weight tree)
   (if (leaf? tree)
       (weight-leaf tree)
@@ -10795,6 +10770,7 @@ however, items are compared by their weights, and the element being added to
 the set is never already in it.
 
 @lisp
+
 (define (adjoin-set x set)
   (cond ((null? set) (list x))
         ((< (weight x) (weight (car set))) 
@@ -10892,6 +10868,8 @@ encode the lyr@-ics of 1950s rock songs.  (Note that the ``symbols'' of an
 ``alphabet'' need not be individual letters.)
 
 @example
+
+
 A     2     NA  16
 BOOM  1     SHA  3
 GET   2     YIP  9
@@ -10905,14 +10883,10 @@ encode the following message:
 @example
 Get a job
 Sha na na na na na na na na
-@end example
 
-@example
 Get a job
 Sha na na na na na na na na
-@end example
 
-@example
 Wah yip yip yip yip yip yip yip yip yip
 Sha boom
 @end example
@@ -11014,6 +10988,13 @@ barriers play the same role as the ones in @ref{Figure 2.1}.  They isolate
 there is a ``vertical'' barrier that gives us the ability to separately design
 and install alternative representations.
 
+In @ref{2.5} we will show how to use type tags and data-directed style
+to develop a generic arithmetic package.  This provides procedures (@t{add},
+@t{mul}, and so on) that can be used to manipulate all sorts of ``numbers''
+and can be easily extended when a new kind of number is needed.  In 
+@ref{2.5.3}, we'll show how to use generic arithmetic in a system that performs
+symbolic algebra.
+
 @float
 @anchor{Figure 2.19}
 @ifinfo
@@ -11038,17 +11019,12 @@ and install alternative representations.
 @sp 0.9
 @center @image{fig/chap2/Fig2.19a,139mm,,,.pdf}
 @sp 0.9
+@quotation
 @strong{Figure 2.19:} Data-abstraction barriers in the complex-number system.
+@end quotation
 @sp 0.9
 @end iftex
 @end float
-
-In @ref{2.5} we will show how to use type tags and data-directed style
-to develop a generic arithmetic package.  This provides procedures (@t{add},
-@t{mul}, and so on) that can be used to manipulate all sorts of ``numbers''
-and can be easily extended when a new kind of number is needed.  In 
-@ref{2.5.3}, we'll show how to use generic arithmetic in a system that performs
-symbolic algebra.
 
 @menu
 * 2-4-1::            Representations for Complex Numbers
@@ -11537,7 +11513,9 @@ interface.
 @sp 0.6
 @center @image{fig/chap2/Fig2.21a,139mm,,,.pdf}
 @sp 0.7
+@quotation
 @strong{Figure 2.21:} Structure of the generic complex-arithmetic system.
+@end quotation
 @sp 0.7
 @end iftex
 @end float
@@ -11603,17 +11581,6 @@ between operation name, data type, and actual procedure was spread out among
 the various conditional clauses in the generic interface procedures.  But the
 same information could have been organized in a table, as shown in @ref{Figure 2.22}.
 
-Data-directed programming is the technique of designing programs to work with
-such a table directly.  Previously, we implemented the mechanism that
-interfaces the complex-arithmetic code with the two representation packages as
-a set of procedures that each perform an explicit dispatch on type.  Here we
-will implement the interface as a single procedure that looks up the
-combination of the operation name and argument type in the table to find the
-correct procedure to apply, and then applies it to the contents of the
-argument.  If we do this, then to add a new representation package to the
-system we need not change any existing procedures; we need only add new entries
-to the table.
-
 @float
 @anchor{Figure 2.22}
 @ifinfo
@@ -11632,13 +11599,26 @@ angle      | angle-polar     | angle-rectangular
 @end quotation
 @end ifinfo
 @iftex
-@sp 0.1
+@sp 0.5
 @center @image{fig/chap2/Fig2.22,139mm,,,.pdf}
 @sp 0.5
+@quotation
 @strong{Figure 2.22:} Table of operations for the complex-number system.
-@sp 0.8
+@end quotation
+@sp 0.7
 @end iftex
 @end float
+
+Data-directed programming is the technique of designing programs to work with
+such a table directly.  Previously, we implemented the mechanism that
+interfaces the complex-arithmetic code with the two representation packages as
+a set of procedures that each perform an explicit dispatch on type.  Here we
+will implement the interface as a single procedure that looks up the
+combination of the operation name and argument type in the table to find the
+correct procedure to apply, and then applies it to the contents of the
+argument.  If we do this, then to add a new representation package to the
+system we need not change any existing procedures; we need only add new entries
+to the table.
 
 To implement this plan, assume that we have two procedures, @t{put} and
 @t{get}, for manipulating the operation-and-type table:
@@ -11681,7 +11661,6 @@ numbers.  This is accomplished by calling the following procedure:
     (atan (imag-part z) (real-part z)))
   (define (make-from-mag-ang r a)
     (cons (* r (cos a)) (* r (sin a))))
-
   @r{;; interface to the rest of the system}
   (define (tag x) 
     (attach-tag 'rectangular x))
@@ -11717,7 +11696,6 @@ Ben's internally defined constructors, except that they attach the tag.
 Alyssa's polar package is analogous:
 
 @lisp
-
 (define (install-polar-package)
   @r{;; internal procedures}
   (define (magnitude z) (car z))
@@ -11812,7 +11790,6 @@ numbers whenever we have magnitudes and angles:
   ((get 'make-from-real-imag 
         'rectangular) 
    x y))
-
 (define (make-from-mag-ang r a)
   ((get 'make-from-mag-ang 
         'polar) 
@@ -11941,7 +11918,7 @@ file.  How should the record be structured in order to make this operation
 work?
 
 @item
-Implement for headquarters a @t{find-employee-record} procedure.  This
+Implement for headquarters a @t{find-@/employee-@/record} procedure.  This
 should search all the divisions' files for the record of a given employee and
 return the record.  Assume that this procedure takes as arguments an employee's
 name and a list of all the divisions' files.
@@ -12565,6 +12542,17 @@ very simple kind, in which each type has at most one supertype and at most one
 subtype.  Such a structure, called a @newterm{tower}, is illustrated in
 @ref{Figure 2.25}.
 
+If we have a tower structure, then we can greatly simplify the problem of
+adding a new type to the hierarchy, for we need only specify how the new type
+is embedded in the next supertype above it and how it is the supertype of the
+type below it.  For example, if we want to add an integer to a complex number,
+we need not explicitly define a special coercion procedure
+@t{integer->complex}.  Instead, we define how an integer can be transformed
+into a rational number, how a rational number is transformed into a real
+number, and how a real number is transformed into a complex number.  We then
+allow the system to transform the integer into a complex number through these
+steps and then add the two complex numbers.
+
 @float
 @quotation
 @anchor{Figure 2.25}
@@ -12593,17 +12581,6 @@ integer
 @end iftex
 @end quotation
 @end float
-
-If we have a tower structure, then we can greatly simplify the problem of
-adding a new type to the hierarchy, for we need only specify how the new type
-is embedded in the next supertype above it and how it is the supertype of the
-type below it.  For example, if we want to add an integer to a complex number,
-we need not explicitly define a special coercion procedure
-@t{integer->complex}.  Instead, we define how an integer can be transformed
-into a rational number, how a rational number is transformed into a real
-number, and how a real number is transformed into a complex number.  We then
-allow the system to transform the integer into a complex number through these
-steps and then add the two complex numbers.
 
 We can redesign our @t{apply-generic} procedure in the following way: For
 each type, we need to supply a @t{raise} procedure, which ``raises'' objects
@@ -12958,7 +12935,6 @@ multiplication of polys:
       (error "Polys not in same var 
               -- ADD-POLY"
              (list p1 p2))))
-
 (define (mul-poly p1 p2)
   (if (same-variable? (variable p1) 
                       (variable p2))
@@ -13667,6 +13643,8 @@ expressions in either integers or polynomials.  To test your program, try the
 example at the beginning of this extended exercise:
 
 @lisp
+
+
 (define p1 
   (make-polynomial 
    'x 
@@ -13717,8 +13695,8 @@ compute polynomial @acronym{GCD}s.}
 [greek not included here]
 @end ifinfo
 @tex
-$ {M\!\epsilon\!\tau\!\alpha\!\beta\!\acute{\alpha}\!\lambda\!\lambda\! o\!\nu\ 
-\grave{\alpha}\nu\!\alpha\!\pi\!\alpha\!\acute{\upsilon}\!\epsilon\!\tau\!\alpha\iota} $
+$ {M\epsilon\tau\alpha\beta\acute{\alpha}\lambda\lambda o\nu\ 
+\,\,\grave{\alpha}\nu\alpha\pi\alpha\acute{\upsilon}\epsilon\tau\alpha\iota} $
 @end tex
 
 (Even while it changes, it stands still.)

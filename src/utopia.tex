@@ -91,7 +91,7 @@
 \else
   % was 10pt:
   \def\textfontsize{16pt}
-  \textleading = 22.4pt % added more leading for Utopia, was 15.4pt (new leading 40%)
+  \textleading = 20pt 	% 25%
   \setfont\textrm\rmfontprefix\rmshape{\textfontsize}
 \fi
 \setfont\textbf\rmfontprefix\bfshape{\textfontsize}
@@ -99,11 +99,11 @@
 \setfont\textsl\rmfontprefix\slshape{\textfontsize}
 \setfont\textsc\rmfontprefix\scshape{\textfontsize}
 % For tt shapes:
-\setfont\texttt\ttfontprefix\ttshape{14.4pt}	% Bera Sans Mono is bigger than Utopia,
-\setfont\textttsl\ttfontprefix\ttslshape{14.4pt}	% needs scaling
+\setfont\texttt\ttfontprefix\ttshape{14.0pt}		% Bera Sans Mono is bigger than Utopia,
+\setfont\textttsl\ttfontprefix\ttslshape{14.0pt}	% needs scaling (exact match is 14.4pt)
 % For math:
-\setfont\texti\mtfontprefix\mtitshape{17.4pt}	% Fourier is smaller than Utopia, 
-\setfont\textsy\mtfontprefix\mtsyshape{17.4pt}	% needs scaling
+\setfont\texti\mtfontprefix\mtitshape{17.4pt}		% Fourier is smaller than Utopia, 
+\setfont\textsy\mtfontprefix\mtsyshape{17.4pt}		% needs scaling
 
 % A few fonts for \defun, etc.
 \setfont\defbf\rmfontprefix\bxshape{14.5pt} %was 1314
@@ -117,8 +117,8 @@
 \setfont\smallsl\rmfontprefix\slshape{\smallfontsize}
 \setfont\smallsc\rmfontprefix\scshape{\smallfontsize}
 % For tt shapes:
-\setfont\smalltt\ttfontprefix\ttshape{12.6pt}
-\setfont\smallttsl\ttfontprefix\ttslshape{12.6pt}
+\setfont\smalltt\ttfontprefix\ttshape{12.3pt}		% (exact match is 12.6pt)
+\setfont\smallttsl\ttfontprefix\ttslshape{12.3pt}
 % For math:
 \setfont\smalli\mtfontprefix\mtitshape{15.6pt}
 \setfont\smallsy\mtfontprefix\mtsyshape{15.6pt}
@@ -138,7 +138,7 @@
 \setfont\smallersy\mtfontprefix\mtsyshape{\smallerfontsize}
 
 % Fonts for title page:
-\def\titlefontsize{40pt} % was 26.8pt (34pt)
+\def\titlefontsize{30pt} % was 26.8pt (34pt)
 \setfont\titlerm\rmfontprefix\rmbshape{\titlefontsize}
 \setfont\titleit\rmfontprefix\itbshape{\titlefontsize}
 \setfont\titlesl\rmfontprefix\slbshape{\titlefontsize}
@@ -224,7 +224,7 @@
 \setfont\fordrm\rmfontprefix\rmshape{9.6pt}
 
 \let\subtitlerm=\textbf
-\def\subtitlefont{\subtitlerm \normalbaselineskip = 24pt \normalbaselines}
+\def\subtitlefont{\subtitlerm \normalbaselineskip = 22pt \normalbaselines}
 
 % Adapted from font_utopia.tex (original author Amit Raj Dhawan):
 
