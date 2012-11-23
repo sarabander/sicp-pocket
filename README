@@ -1,10 +1,7 @@
-A work-in-progress pocket version of "Structure and Interpretation of Computer Programs" (SICP) by Abelson and Sussman. With SVG images and properly typeset mathematics. Set in bigger text for comfortable reading on 6" devices.
-
-Alpha version with only 1st and 2nd chapter reformatted.
+A pocket version of "Structure and Interpretation of Computer Programs" (SICP) by Abelson, Sussman, and Sussman. With SVG images and properly typeset mathematics. Set in bigger text for comfortable reading on 6" devices.
 
 It is based on Neil Van Dyke's Texinfo version: http://www.neilvandyke.org/sicp-texi/
 
 Official SICP page with HTML version: http://mitpress.mit.edu/sicp/
 
-Thanks to Gavrie Philipson for the initiative!
-Also thanks to others (you know who you are) for encouragement!
+Thanks Gavrie Philipson (http://github.com/gavrie/sicp-pdf) for the initiative, and others for encouragement!

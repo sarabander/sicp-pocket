@@ -1,7 +1,7 @@
 
 
-                            sicp.texi
-                           ===========
+                         sicp-pocket.texi
+                        ==================
 
   ---------------------------------------------------------------
     This is the Texinfo source of Structure and Interpretation 
@@ -16,6 +16,6 @@
 
           To compile the source, producing a PDF, enter:
 
-          texi2pdf sicp.texi
+          texi2pdf sicp-pocket.texi
 
   ---------------------------------------------------------------

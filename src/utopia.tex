@@ -1,11 +1,10 @@
-@c utopia.tex -- TeXinfo macros to set the default Roman font to Utopia
+@c utopia.tex -- Texinfo macros to set the default Roman font to Utopia
 @c
-@def@utopiaversion{2011-04-14.01}
+@def@utopiaversion{2012-10-04.01.A.R}
 @c
-@c--------------------------------------------------------------------------------
-@c This file is edited by Andres Raba combining and borrowing from three files: 
-@c palatino.tex from GNU Press,
-@c texinfo.tex from Free Software Foundation, and
+@c--------------------------------------------------------------------------------------
+@c This file is customized by Andres Raba combining and borrowing from three files: 
+@c palatino.tex from GNU Press, texinfo.tex from Free Software Foundation, and
 @c font_utopia.tex from font-change CTAN package created by Amit Raj Dhawan.
 @c 
 @c You can get original palatino.tex from GNU Press CVS:
@@ -15,9 +14,9 @@
 @c
 @c The latest texinfo.tex is available from:
 @c http://www.gnu.org/software/texinfo/
-@c--------------------------------------------------------------------------------
+@c--------------------------------------------------------------------------------------
 @c
-@c Copyright (C) 2003  Free Software Foundation, Inc.
+@c Copyright (C) 2003, 2012  Free Software Foundation, Inc.
 @c
 @c This utopia.tex file is free software; you can redistribute it and/or
 @c modify it under the terms of the GNU General Public License as
@@ -90,17 +89,17 @@
   \setfont\textrm\rmfontprefix\rmshape{\textfontsize}
 \else
   % was 10pt:
-  \def\textfontsize{16pt}
-  \textleading = 20pt 	% 25%
+  \def\textfontsize{16pt}				% Size of the main roman font.
+  \textleading = 21.3pt 				% 33% (Utopia needs more air)
   \setfont\textrm\rmfontprefix\rmshape{\textfontsize}
 \fi
 \setfont\textbf\rmfontprefix\bfshape{\textfontsize}
 \setfont\textit\rmfontprefix\itshape{\textfontsize}
 \setfont\textsl\rmfontprefix\slshape{\textfontsize}
 \setfont\textsc\rmfontprefix\scshape{\textfontsize}
-% For tt shapes:
-\setfont\texttt\ttfontprefix\ttshape{14.0pt}		% Bera Sans Mono is bigger than Utopia,
-\setfont\textttsl\ttfontprefix\ttslshape{14.0pt}	% needs scaling (exact match is 14.4pt)
+% For tt shapes:					% Bera Sans Mono is bigger than Utopia,
+\setfont\texttt\ttfontprefix\ttshape{14.1pt}		% needs scaling (exact x-height match is 14.4pt,
+\setfont\textttsl\ttfontprefix\ttslshape{14.1pt}	% but 14.1pt gives better optical balance)
 % For math:
 \setfont\texti\mtfontprefix\mtitshape{17.4pt}		% Fourier is smaller than Utopia, 
 \setfont\textsy\mtfontprefix\mtsyshape{17.4pt}		% needs scaling
@@ -110,35 +109,35 @@
 \def\df{\let\tentt=\deftt \let\tenbf = \defbf \bf}
 
 % Fonts for indices, footnotes, small examples (9pt).
-\def\smallfontsize{14pt}		% was 9pt
+\def\smallfontsize{14pt}
 \setfont\smallrm\rmfontprefix\rmshape{\smallfontsize}
 \setfont\smallbf\rmfontprefix\bfshape{\smallfontsize}
 \setfont\smallit\rmfontprefix\itshape{\smallfontsize}
 \setfont\smallsl\rmfontprefix\slshape{\smallfontsize}
 \setfont\smallsc\rmfontprefix\scshape{\smallfontsize}
 % For tt shapes:
-\setfont\smalltt\ttfontprefix\ttshape{12.3pt}		% (exact match is 12.6pt)
-\setfont\smallttsl\ttfontprefix\ttslshape{12.3pt}
+\setfont\smalltt\ttfontprefix\ttshape{12.43pt}		% (exact match is 12.6pt)
+\setfont\smallttsl\ttfontprefix\ttslshape{12.43pt}
 % For math:
 \setfont\smalli\mtfontprefix\mtitshape{15.6pt}
 \setfont\smallsy\mtfontprefix\mtsyshape{15.6pt}
 
 % Fonts for small examples (8pt).
-\def\smallerfontsize{12.3pt}		% was 8pt
+\def\smallerfontsize{12.3pt}
 \setfont\smallerrm\rmfontprefix\rmshape{\smallerfontsize}
 \setfont\smallerbf\rmfontprefix\bfshape{\smallerfontsize}
 \setfont\smallerit\rmfontprefix\itshape{\smallerfontsize}
 \setfont\smallersl\rmfontprefix\slshape{\smallerfontsize}
 \setfont\smallersc\rmfontprefix\scshape{\smallerfontsize}
 % For tt shapes:
-\setfont\smallertt\ttfontprefix\ttshape{11.1pt}
-\setfont\smallerttsl\ttfontprefix\ttslshape{11.1pt}
+\setfont\smallertt\ttfontprefix\ttshape{10.9pt}
+\setfont\smallerttsl\ttfontprefix\ttslshape{10.9pt}
 % For math:
 \setfont\smalleri\mtfontprefix\mtitshape{\smallerfontsize}
 \setfont\smallersy\mtfontprefix\mtsyshape{\smallerfontsize}
 
 % Fonts for title page:
-\def\titlefontsize{30pt} % was 26.8pt (34pt)
+\def\titlefontsize{31.4pt}
 \setfont\titlerm\rmfontprefix\rmbshape{\titlefontsize}
 \setfont\titleit\rmfontprefix\itbshape{\titlefontsize}
 \setfont\titlesl\rmfontprefix\slbshape{\titlefontsize}
@@ -290,7 +289,7 @@
 \let\setfont=\setfontorig
 \def\setfontorig{\relax}
 
-% Restore the TeXinfo character set.
+% Restore the Texinfo character set.
 \catcode`\\=\active
 @catcode`@%=@other
 
